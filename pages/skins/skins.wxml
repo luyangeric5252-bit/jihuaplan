@@ -4,11 +4,11 @@
   <scroll-view scroll-y class="scroll">
     <text class="tip">全部皮肤免费 · 无需内购</text>
     <view class="grid2">
-      <view wx:for="{{skins}}" wx:key="id" class="item" bindtap="pick" data-id="{{item.id}}">
+      <view wx:for="{{skins}}" wx:key="id" class="item {{item.id===selected?'on':''}}" bindtap="pick" data-id="{{item.id}}">
         <view class="swatch" style="background: linear-gradient(160deg, {{item.g[0]}}, {{item.g[1]}});">
           <view wx:if="{{item.id===selected}}" class="check">✓</view>
         </view>
-        <text class="name">{{item.name}}</text>
+        <text class="name {{item.id===selected?'on':''}}">{{item.name}}</text>
       </view>
     </view>
   </scroll-view>
