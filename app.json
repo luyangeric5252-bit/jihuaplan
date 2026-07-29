@@ -28,6 +28,5 @@
     ]
   },
   "style": "v2",
-  "lazyCodeLoading": "false",
   "sitemapLocation": "sitemap.json"
 }
