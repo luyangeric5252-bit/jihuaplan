@@ -1,0 +1,121 @@
+/* 计划经济 v2.0 全局样式 */
+page {
+  --card-bg: rgba(255,255,255,.55);
+  --text: #1c1c2e;
+  --text-2: #8a8aa0;
+  --red: #ff5b6e;
+  --green: #0f8f63;
+  --blue: #5b6cff;
+  --gold: #9a6a00;
+  background: #eef1fb;
+  font-family: -apple-system, "PingFang SC", "Helvetica Neue", sans-serif;
+  color: var(--text);
+}
+
+.card {
+  background: var(--card-bg);
+  border-radius: 18rpx;
+  padding: 28rpx;
+  box-shadow: 0 6rpx 22rpx rgba(91,108,255,.06);
+  backdrop-filter: blur(20rpx);
+  -webkit-backdrop-filter: blur(20rpx);
+}
+.row { display: flex; align-items: center; }
+.row .k { font-size: 28rpx; color: var(--text-2); }
+.row .v { margin-left: auto; font-size: 30rpx; font-weight: 700; }
+.row .v.red { color: var(--red); }
+.row .v.green { color: var(--green); }
+.sub { font-size: 22rpx; color: var(--text-2); margin-top: 8rpx; }
+
+.pill { display: inline-flex; align-items: center; padding: 10rpx 24rpx; border-radius: 999rpx; font-size: 26rpx; font-weight: 600; }
+.pill.red { background: rgba(255,91,110,.16); color: var(--red); }
+.pill.green { background: rgba(15,143,99,.14); color: var(--green); }
+
+.btn-primary {
+  background: linear-gradient(135deg, #5b6cff, #8b97ff);
+  color: #fff; font-weight: 700; border-radius: 28rpx; padding: 28rpx;
+  text-align: center;
+}
+.btn-primary:active { opacity: .85; }
+
+.divider { height: 1rpx; background: rgba(0,0,0,.06); margin: 16rpx 0; }
+
+/* 暗黑模式（对应原型 skin-night 全局浅字） */
+@media (prefers-color-scheme: dark) {
+  /* 注：小程序暗黑由皮肤切换控制，非系统；此处仅兜底 */
+}
+
+/* 记账中央按钮凸起 */
+.fab-wrap { position: fixed; left: 0; right: 0; bottom: 0; display: flex; justify-content: center; z-index: 50; pointer-events: none; }
+.fab {
+  pointer-events: auto;
+  width: 112rpx; height: 112rpx; border-radius: 50%;
+  background: linear-gradient(135deg, #5b6cff, #8b97ff);
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 64rpx; font-weight: 300;
+  box-shadow: 0 8rpx 24rpx rgba(91,108,255,.4);
+  margin-bottom: 40rpx;
+}
+.fab:active { transform: scale(.94); }
+
+/* 弹框（对应原型 .sheet，跟皮肤色） */
+.sheet-mask { position: fixed; inset: 0; background: rgba(0,0,0,.4); z-index: 100; display: flex; align-items: flex-end; }
+.sheet {
+  width: 100%; border-radius: 32rpx 32rpx 0 0; padding: 40rpx 32rpx calc(40rpx + env(safe-area-inset-bottom));
+  animation: slideUp .3s cubic-bezier(.22,1,.36,1);
+}
+@keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+
+/* 储蓄罐（对应原型 .jar 三态边框） */
+.jar {
+  position: relative; height: 440rpx; border-radius: 44rpx; overflow: hidden;
+  border: 4rpx solid transparent;
+  background:
+    linear-gradient(rgba(255,255,255,.3), rgba(255,255,255,.3)) padding-box,
+    linear-gradient(135deg,#ffe9a8,#ffd24d,#ffb300,#ffe9a8) border-box;
+  box-shadow: inset 0 4rpx 20rpx rgba(91,108,255,.12), 0 0 0 2rpx rgba(255,210,77,.35), 0 12rpx 44rpx rgba(255,190,60,.25);
+}
+.jar.red {
+  background:
+    linear-gradient(rgba(255,255,255,.3), rgba(255,255,255,.3)) padding-box,
+    linear-gradient(135deg,#ff7a88,#ff5b6e) border-box;
+  box-shadow: inset 0 4rpx 20rpx rgba(255,91,110,.12), 0 12rpx 44rpx rgba(255,91,110,.25);
+}
+.jar.done {
+  background:
+    linear-gradient(rgba(255,255,255,.3), rgba(255,255,255,.3)) padding-box,
+    linear-gradient(135deg,#2fd99a,#0f8f63) border-box;
+  box-shadow: 0 0 30rpx rgba(47,217,154,.4);
+}
+.jar .fill {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(180deg, rgba(91,108,255,.85), rgba(139,151,255,.8));
+  transition: height .6s ease-out;
+}
+.jar.red .fill { background: linear-gradient(180deg, rgba(255,122,136,.85), rgba(255,91,110,.8)); }
+.jar .float {
+  position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;
+}
+.jar .float .n { font-size: 80rpx; font-weight: 900; color: #9a6a00; letter-spacing: 1rpx;
+  text-shadow: 0 2rpx 0 rgba(255,235,160,.6), 0 4rpx 16rpx rgba(180,120,0,.25); }
+.jar .float .s { font-size: 22rpx; color: #7a7a92; margin-top: 8rpx; }
+/* 暗夜紫储蓄罐数字：白填充 + 金描边（对应原型 .skin-night .jar .float .n） */
+.jar.night .float .n { color: #fff; -webkit-text-stroke: 2rpx #d4af37; text-shadow: 0 4rpx 16rpx rgba(200,150,0,.4); }
+.jar.night .float .s { color: rgba(255,255,255,.85); }
+
+/* 金币下落（对应原型 .coin / coinRain） */
+.coin {
+  position: absolute; top: -60rpx; width: 44rpx; height: 44rpx; border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #fff6cf, #ffd24d 55%, #e8a200);
+  box-shadow: 0 4rpx 12rpx rgba(180,120,0,.4), inset 0 0 0 4rpx rgba(255,255,255,.5);
+  z-index: 6; color: #a8650a; font-size: 22rpx; line-height: 44rpx; text-align: center;
+  animation: coinFall 1.1s cubic-bezier(.4,0,.6,1) forwards;
+}
+@keyframes coinFall {
+  0% { transform: translateY(0) rotate(0); opacity: 0; }
+  15% { opacity: 1; }
+  100% { transform: translateY(400rpx) rotate(320deg); opacity: 0; }
+}
+
+/* 统计内页返回 */
+.nav-back { font-size: 30rpx; color: var(--blue); }

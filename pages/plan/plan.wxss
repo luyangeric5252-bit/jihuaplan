@@ -1,0 +1,19 @@
+.page { min-height: 100vh; }
+.head { padding: 24rpx 36rpx 0; }
+.title { font-size: 40rpx; font-weight: 800; }
+.title-sm { font-size: 30rpx; font-weight: 700; }
+.scroll { padding: 24rpx 36rpx 160rpx; }
+.inp { flex: 1; text-align: right; margin: 0 16rpx; font-size: 30rpx; }
+.unit { font-size: 22rpx; color: var(--text-2); width: 90rpx; text-align: right; }
+.tip { display:block; font-size: 22rpx; color: var(--text-2); margin-top: 16rpx; text-align:center; }
+
+.weekrow { display: flex; margin-top: 20rpx; }
+.weekrow .wd { flex: 1; text-align: center; font-size: 22rpx; color: var(--text-2); }
+.grid { display: flex; flex-wrap: wrap; margin-top: 12rpx; }
+.cell {
+  width: 14.28%; height: 72rpx; display: flex; align-items: center; justify-content: center;
+  font-size: 26rpx; box-sizing: border-box;
+}
+.cell.ok { color: #2fd99a; background: rgba(47,217,154,.16); border-radius: 12rpx; }
+.cell.bad { color: #ff6b7d; background: rgba(255,107,125,.18); border-radius: 12rpx; }
+.cell.today { color: #aab4ff; border: 2rpx solid #aab4ff; border-radius: 12rpx; }

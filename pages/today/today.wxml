@@ -1,0 +1,37 @@
+<view class="page" style="background: linear-gradient(160deg, {{bg[0]}}, {{bg[1]}});">
+  <view class="head">
+    <text class="title">今天</text>
+  </view>
+
+  <scroll-view scroll-y class="scroll">
+    <!-- 今日结余 pill -->
+    <view style="text-align:center; margin: 24rpx 0;">
+      <view class="pill {{dayDiff<0?'red':'green'}}">
+        {{dayDiff<0? '⚠ 今日赤字 ¥'+fmt(-dayDiff) : '✓ 今日结余 ¥'+fmt(dayDiff)}}
+      </view>
+    </view>
+
+    <!-- 本周/本月 -->
+    <view class="card">
+      <view class="row">
+        <text class="k">本周（一~日）</text>
+        <text class="v {{weekDiff<0?'red':''}}">{{weekDiff<0?'-':''}}¥{{fmt(weekDiff)}}</text>
+      </view>
+      <view class="sub">预算剩余（周预算−本周已花）</view>
+      <view class="divider"></view>
+      <view class="row" style="margin-top:18rpx;">
+        <text class="k">本月</text>
+        <text class="v {{monthDiff<0?'red':''}}">{{monthDiff<0?'-':''}}¥{{fmt(monthDiff)}}</text>
+      </view>
+      <view class="sub">预算剩余（月预算−本月已花）</view>
+    </view>
+
+    <!-- 今日剩余可花 -->
+    <view class="card" style="margin-top:24rpx;">
+      <view class="row">
+        <text class="k">剩余可花</text>
+        <text class="v {{dayDiff<0?'red':''}}">{{dayDiff<0?'-':'+'}}¥{{fmt(dayDiff)}}</text>
+      </view>
+    </view>
+  </scroll-view>
+</view>

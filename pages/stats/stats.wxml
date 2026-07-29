@@ -1,0 +1,45 @@
+<view class="page" style="background: linear-gradient(160deg, {{bg[0]}}, {{bg[1]}});">
+  <view class="head">
+    <text class="nav-back" bindtap="goBack">‹ 返回</text>
+    <text class="title">统计</text>
+  </view>
+
+  <scroll-view scroll-y class="scroll">
+    <!-- 分类占比 -->
+    <view class="card">
+      <text class="title-sm">消费分类占比</text>
+      <view wx:for="{{legend}}" wx:key="k" class="lg-row">
+        <view class="dot" style="background:{{item.color}};"></view>
+        <text class="lg-k">{{item.k}}</text>
+        <text class="lg-v">{{item.pct}}%</text>
+      </view>
+    </view>
+
+    <!-- 近7天 -->
+    <view class="card" style="margin-top:24rpx;">
+      <text class="title-sm">近 7 天消费</text>
+      <view class="bar">
+        <view wx:for="{{last7}}" wx:key="w" class="b">
+          <text class="bv" wx:if="{{item.amt>0}}">¥{{item.amt}}</text>
+          <view class="col" style="height: {{item.h}}rpx;"></view>
+          <text class="bw">{{item.w}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 总笔数展开 -->
+    <view class="card" style="margin-top:24rpx;">
+      <view class="row" bindtap="toggle">
+        <text class="k" style="font-size:30rpx;font-weight:700;">总笔数</text>
+        <text class="v" style="color:var(--text-2);">{{total}} 笔 {{expanded?'▾':'▸'}}</text>
+      </view>
+      <view wx:if="{{expanded}}" class="exp">
+        <view wx:for="{{list}}" wx:key="ts" class="exp-row">
+          <text>{{item.cat}}</text>
+          <text class="green">¥{{item.amount}}</text>
+          <text class="dt">{{item.date}}</text>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

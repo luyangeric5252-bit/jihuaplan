@@ -1,0 +1,9 @@
+# 本地密钥（含 AppSecret，绝不提交）
+.secret.local
+*.secret
+.env
+.env.local
+
+# 微信开发者工具本地缓存
+project.private.config.json
+deploy/

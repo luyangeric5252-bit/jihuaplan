@@ -1,0 +1,36 @@
+<view class="page" style="background: linear-gradient(160deg, {{bg[0]}}, {{bg[1]}});">
+  <view class="head">
+    <text class="nav-back" bindtap="goBack">‹ 返回</text>
+    <text class="title">记一笔</text>
+  </view>
+
+  <scroll-view scroll-y class="scroll">
+    <view class="amount">
+      <text class="cur">¥</text>
+      <input class="amt" type="digit" value="{{amount}}" bindinput="onAmt" placeholder="0" focus="{{true}}"/>
+    </view>
+
+    <view class="card">
+      <view class="cat-grid">
+        <view wx:for="{{cats}}" wx:key="*this"
+              class="cat {{cat===item?'on':''}}" bindtap="pickCat" data-c="{{item}}">{{item}}</view>
+      </view>
+    </view>
+
+    <view class="card" style="margin-top:24rpx;" bindtap="toggleDate">
+      <view class="row">
+        <text class="k">日期</text>
+        <text class="v">{{date}} ›</text>
+      </view>
+      <picker wx:if="{{showDate}}" mode="date" value="{{date}}" bindchange="onDate">
+        <view class="picker-box">选择日期：{{date}}</view>
+      </picker>
+    </view>
+
+    <view class="card" style="margin-top:24rpx;">
+      <input class="note" placeholder="备注（可选）" value="{{note}}" bindinput="onNote"/>
+    </view>
+
+    <view class="btn-primary" style="margin-top:40rpx;" bindtap="commit">记一笔</view>
+  </scroll-view>
+</view>

@@ -1,0 +1,44 @@
+<view class="page" style="background: linear-gradient(160deg, {{bg[0]}}, {{bg[1]}});">
+  <view class="head"><text class="title">计划</text></view>
+
+  <scroll-view scroll-y class="scroll">
+    <!-- 预算输入 -->
+    <view class="card">
+      <view class="row" style="margin-bottom:24rpx;">
+        <text class="k">工作日预算</text>
+        <input class="inp" type="digit" value="{{workday}}" bindinput="onWork" placeholder="0"/>
+        <text class="unit">元/天</text>
+      </view>
+      <view class="row" style="margin-bottom:24rpx;">
+        <text class="k">非工作日预算</text>
+        <input class="inp" type="digit" value="{{restday}}" bindinput="onRest" placeholder="0"/>
+        <text class="unit">元/天</text>
+      </view>
+      <view class="divider"></view>
+      <view class="row" style="margin-bottom:24rpx; margin-top:24rpx;">
+        <text class="k">储蓄目标</text>
+        <input class="inp" type="digit" value="{{goal}}" bindinput="onGoal" placeholder="0"/>
+        <text class="unit">元</text>
+      </view>
+      <view class="row">
+        <text class="k">目标日期</text>
+        <input class="inp" value="{{goalDate}}" bindinput="onDate" placeholder="2026-12-31"/>
+      </view>
+    </view>
+
+    <!-- 当月日历 -->
+    <view class="card" style="margin-top:24rpx;">
+      <text class="title-sm">本月日历</text>
+      <view class="weekrow">
+        <text wx:for="{{weekHead}}" wx:key="*this" class="wd">{{item}}</text>
+      </view>
+      <view class="grid">
+        <view wx:for="{{cells}}" wx:key="key" class="cell {{item.cls}}">
+          <text wx:if="{{item.day>0}}">{{item.day}}</text>
+        </view>
+      </view>
+    </view>
+
+    <text class="tip">内置 2026 中国节假日表，无需联网</text>
+  </scroll-view>
+</view>

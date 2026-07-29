@@ -1,0 +1,18 @@
+{
+  "description": "计划经济 v2.0 微信小程序",
+  "packOptions": { "ignore": [], "include": [] },
+  "setting": {
+    "urlCheck": false,
+    "es6": true,
+    "enhance": true,
+    "postcss": true,
+    "minified": true,
+    "newFeature": true,
+    "bigPackageSizeSupport": true
+  },
+  "compileType": "miniprogram",
+  "libVersion": "3.5.5",
+  "appid": "wx1103dec94bd00b4e",
+  "projectname": "wechat-jingjiplan",
+  "condition": {}
+}

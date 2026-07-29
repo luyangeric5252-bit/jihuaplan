@@ -1,0 +1,32 @@
+{
+  "pages": [
+    "pages/today/today",
+    "pages/plan/plan",
+    "pages/record/record",
+    "pages/jar/jar",
+    "pages/skins/skins",
+    "pages/stats/stats"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#eef1fb",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "计划经济",
+    "backgroundColor": "#eef1fb",
+    "backgroundTextStyle": "light"
+  },
+  "tabBar": {
+    "color": "#9a9ab0",
+    "selectedColor": "#5b6cff",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "white",
+    "list": [
+      { "pagePath": "pages/today/today", "text": "今天", "iconPath": "assets/tab-today.png", "selectedIconPath": "assets/tab-today-on.png" },
+      { "pagePath": "pages/plan/plan", "text": "计划", "iconPath": "assets/tab-plan.png", "selectedIconPath": "assets/tab-plan-on.png" },
+      { "pagePath": "pages/record/record", "text": "记账", "iconPath": "assets/tab-add.png", "selectedIconPath": "assets/tab-add-on.png" },
+      { "pagePath": "pages/jar/jar", "text": "储蓄罐", "iconPath": "assets/tab-jar.png", "selectedIconPath": "assets/tab-jar-on.png" },
+      { "pagePath": "pages/skins/skins", "text": "皮肤", "iconPath": "assets/tab-skins.png", "selectedIconPath": "assets/tab-skins-on.png" }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

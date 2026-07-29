@@ -1,0 +1,4 @@
+.page { min-height: 100vh; }
+.head { padding: 24rpx 36rpx 0; }
+.title { font-size: 40rpx; font-weight: 800; }
+.scroll { padding: 24rpx 36rpx 160rpx; }
