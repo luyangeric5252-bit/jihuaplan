@@ -42,11 +42,6 @@ page {
 
 .divider { height: 1rpx; background: rgba(0,0,0,.06); margin: 16rpx 0; }
 
-/* 暗黑模式（对应原型 skin-night 全局浅字） */
-@media (prefers-color-scheme: dark) {
-  /* 注：小程序暗黑由皮肤切换控制，非系统；此处仅兜底 */
-}
-
 /* 记账中央按钮凸起 */
 .fab-wrap { position: fixed; left: 0; right: 0; bottom: 0; display: flex; justify-content: center; z-index: 50; pointer-events: none; }
 .fab {
