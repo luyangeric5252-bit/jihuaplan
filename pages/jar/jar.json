@@ -1,1 +1,1 @@
-{ "navigationBarTitleText": "储蓄罐", "navigationStyle": "custom" }
+{ "navigationBarTitleText": "储蓄罐", "navigationStyle": "custom", "usingComponents": { "expense-sheet": "/comp/expense-sheet/expense-sheet" } }

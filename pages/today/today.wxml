@@ -57,4 +57,6 @@
       <view wx:else class="empty">今天还没记账，点中间 ＋ 记一笔</view>
     </view>
   </scroll-view>
+
+  <expense-sheet id="expSheet" show="{{expShow}}" night="{{nightClass==='night'}}" bind:close="closeExp" bind:saved="onExpSaved"/>
 </view>

@@ -1,0 +1,27 @@
+<sheet show="{{show}}" night="{{night}}" bind:close="onClose">
+  <view class="head-row">
+    <text class="ttl">制定节流计划</text>
+    <view class="pill brand">自动推算</view>
+  </view>
+
+  <view class="field">
+    <text class="k">工作日预算（周一~五）</text>
+    <input class="inp" type="digit" value="{{workday}}" bindinput="onWork" placeholder="80"/>
+  </view>
+  <view class="field">
+    <text class="k">非工作日预算（六~日）</text>
+    <input class="inp" type="digit" value="{{restday}}" bindinput="onRest" placeholder="120"/>
+  </view>
+  <view class="tip">周/月预算按日历自动推算，无需填写</view>
+  <view class="field" style="margin-top:16rpx;">
+    <text class="k">储蓄目标</text>
+    <input class="inp" type="digit" value="{{goal}}" bindinput="onGoal" placeholder="3000"/>
+  </view>
+  <view class="field">
+    <text class="k">目标日期</text>
+    <input class="inp" type="date" value="{{goalDate}}" bindinput="onDate" placeholder="2026-12-31"/>
+  </view>
+
+  <view class="btn amber" style="margin-top:28rpx;" bindtap="save">保存计划</view>
+  <view class="btn-ghost" style="margin-top:16rpx;" bindtap="onClose">取消</view>
+</sheet>

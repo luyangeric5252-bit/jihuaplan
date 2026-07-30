@@ -1,1 +1,1 @@
-{ "navigationBarTitleText": "今天", "navigationStyle": "custom" }
+{ "navigationBarTitleText": "今天", "navigationStyle": "custom", "usingComponents": { "expense-sheet": "/comp/expense-sheet/expense-sheet" } }

@@ -46,10 +46,19 @@ Component({
     },
     onTap(e) {
       const go = e.currentTarget.dataset.go;
+      if (go === 'record') {
+        // 中间 ＋：打开全局记一笔弹框（由各页注册的 openExpense 处理）
+        const app = getApp();
+        if (app && app.globalData && typeof app.globalData.openExpense === 'function') {
+          app.globalData.openExpense();
+        } else {
+          wx.switchTab({ url: '/pages/record/record' });
+        }
+        return;
+      }
       const map = {
         today: '/pages/today/today',
         plan: '/pages/plan/plan',
-        record: '/pages/record/record',
         jar: '/pages/jar/jar',
         skins: '/pages/skins/skins'
       };

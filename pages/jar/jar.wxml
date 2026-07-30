@@ -64,4 +64,6 @@
       </view>
     </view>
   </view>
+
+  <expense-sheet id="expSheet" show="{{expShow}}" night="{{nightClass==='night'}}" bind:close="closeExp" bind:saved="onExpSaved"/>
 </view>

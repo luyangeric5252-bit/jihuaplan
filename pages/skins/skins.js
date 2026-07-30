@@ -5,6 +5,7 @@ Page({
   data: {
     selected: 'aurora',
     bg: '#eef1fb', nightClass: '',
+    expShow: false,
     skins: [
       { id: 'aurora', name: '极光蓝', g: ['#eef1fb', '#e6e9f7'], bg: ledger.skinBackground('aurora') },
       { id: 'night',  name: '暗夜紫', g: ['#1c1c2e', '#2a2a44'], bg: ledger.skinBackground('night') },
@@ -27,6 +28,10 @@ Page({
       this.getTabBar().setData({ selected: 'skins', night });
     }
     wx.setStatusBarStyle({ style: night ? 'light' : 'dark' });
+    const app = getApp();
+    if (app && app.globalData) {
+      app.globalData.openExpense = () => this.setData({ expShow: true });
+    }
   },
 
   onShow() {
@@ -40,5 +45,11 @@ Page({
     // 即时全局刷新：本页背景、tabBar、状态栏同步变化
     this.refresh();
     wx.showToast({ title: '已切换：' + (this.data.skins.find(s => s.id === id) || {}).name, icon: 'none' });
+  },
+
+  closeExp() { this.setData({ expShow: false }); },
+  onExpSaved() {
+    this.setData({ expShow: false });
+    this.refresh();
   }
 });

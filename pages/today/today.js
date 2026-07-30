@@ -22,7 +22,8 @@ Page({
     weekDiff: 0, weekStr: '0',
     monthDiff: 0, monthStr: '0',
     chips: [],
-    bg: '#eef1fb', nightClass: ''
+    bg: '#eef1fb', nightClass: '',
+    expShow: false
   },
 
   onShow() {
@@ -59,7 +60,18 @@ Page({
     }
     // 状态栏文字颜色随皮肤切换（custom 导航栏时状态栏背景透明，露出页面渐变）
     wx.setStatusBarStyle({ style: night ? 'light' : 'dark' });
+    // 注册全局“记一笔”入口（tabBar ＋ 调用）
+    const app = getApp();
+    if (app && app.globalData) {
+      app.globalData.openExpense = () => this.setData({ expShow: true, bg: ledger.skinBackground(d.skins.selected) });
+    }
   },
 
-  fmt(n) { return Math.round(n); }
+  fmt(n) { return Math.round(n); },
+
+  closeExp() { this.setData({ expShow: false }); },
+  onExpSaved() {
+    this.setData({ expShow: false });
+    this.onShow();
+  }
 });

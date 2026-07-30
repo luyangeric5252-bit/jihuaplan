@@ -1,0 +1,33 @@
+<sheet show="{{show}}" night="{{night}}" bind:close="onClose" bind:drag="onDrag">
+  <view class="head-row">
+    <text class="ttl">记一笔</text>
+    <view class="pill brand">{{tag}}</view>
+  </view>
+
+  <view class="amount">
+    <text class="cur">¥</text>
+    <input class="amt" type="digit" value="{{amount}}" bindinput="onAmt" placeholder="0" focus="{{show}}"/>
+  </view>
+
+  <view class="cat-grid">
+    <view wx:for="{{cats}}" wx:key="*this" class="cat {{cat===item?'on':''}}" bindtap="pickCat" data-c="{{item}}">
+      <text class="e">{{catEmoji[item]}}</text>
+      <text>{{item}}</text>
+    </view>
+  </view>
+
+  <view class="field" bindtap="toggleDate">
+    <text class="k">日期</text>
+    <text class="v">{{date}} ›</text>
+  </view>
+  <picker wx:if="{{showDate}}" mode="date" value="{{date}}" bindchange="onDate">
+    <view class="picker-box">选择日期：{{date}}</view>
+  </picker>
+
+  <view class="field" style="border-bottom:none;">
+    <input class="note" placeholder="备注（可选）" value="{{note}}" bindinput="onNote"/>
+  </view>
+
+  <view class="btn-primary" style="margin-top:32rpx;" bindtap="commit">保存</view>
+  <view class="btn-ghost" style="margin-top:16rpx;" bindtap="onClose">取消</view>
+</sheet>

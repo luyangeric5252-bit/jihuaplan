@@ -1,0 +1,12 @@
+.head-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16rpx; }
+.ttl { font-size: 34rpx; font-weight: 800; }
+.pill.brand { background: rgba(91,108,255,.16); color: #5b6cff; font-size: 22rpx; font-weight: 800; padding: 6rpx 18rpx; border-radius: 999rpx; }
+
+.field { display: flex; justify-content: space-between; align-items: center; padding: 28rpx 0; border-bottom: 1rpx solid var(--line, rgba(0,0,0,.06)); }
+.field .k { font-size: 28rpx; color: var(--text-2, #7a7a92); font-weight: 700; }
+.inp { flex: 1; text-align: right; margin-left: 20rpx; font-size: 30rpx; font-weight: 800; color: var(--text, #1c1c2e); }
+.tip { font-size: 24rpx; color: var(--text-2, #7a7a92); font-weight: 600; padding: 20rpx 0 0; }
+
+.btn.amber { background: linear-gradient(135deg, rgba(255,194,77,.93), rgba(255,176,32,.88)); color: #5a3c00; font-weight: 800; border-radius: 28rpx; padding: 30rpx; text-align: center; font-size: 32rpx; box-shadow: 0 8rpx 22rpx rgba(255,176,32,.35); }
+.btn-ghost { background: rgba(0,0,0,.04); color: var(--text-2, #7a7a92); font-weight: 700; border-radius: 28rpx; padding: 26rpx; text-align: center; font-size: 30rpx; }
+.sheet.night .btn-ghost { background: rgba(255,255,255,.1); color: #aab4ff; }

@@ -33,7 +33,7 @@
         <text>日</text><text>一</text><text>二</text><text>三</text><text>四</text><text>五</text><text>六</text>
       </view>
       <view class="cal">
-        <view wx:for="{{cells}}" wx:key="day" class="{{item.cls}}">
+        <view wx:for="{{cells}}" wx:key="day" class="{{item.cls}}" data-day="{{item.day}}" data-ds="{{item.ds}}" bindtap="onCellTap">
           <text class="d" wx:if="{{item.day>0}}">{{item.day}}</text>
           <text class="mk" wx:if="{{item.mk}}">{{item.mk}}</text>
         </view>
@@ -47,4 +47,10 @@
 
     <view class="btn ghost" bindtap="openPlan">＋ 制定计划</view>
   </scroll-view>
+
+  <!-- 记一笔弹框（补记/记一笔共用） -->
+  <expense-sheet id="expSheet" show="{{expShow}}" night="{{nightClass==='night'}}" presetDate="{{expDate}}" bind:close="closeExp" bind:saved="onExpSaved"/>
+
+  <!-- 制定计划弹框 -->
+  <plan-sheet id="planSheet" show="{{planShow}}" night="{{nightClass==='night'}}" bind:close="closePlan" bind:saved="onPlanSaved"/>
 </view>

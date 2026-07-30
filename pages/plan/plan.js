@@ -20,7 +20,9 @@ Page({
     todayType: '工作日',
     dayBudget: '0', weekBudget: '0', monthBudget: '0',
     ws: '0', ms: '0', weekDiff: '0', monthDiff: '0',
-    cells: []
+    cells: [],
+    expShow: false, expDate: '',
+    planShow: false
   },
 
   onShow() {
@@ -55,6 +57,11 @@ Page({
       this.getTabBar().setData({ selected: 'plan', night });
     }
     wx.setStatusBarStyle({ style: night ? 'light' : 'dark' });
+    // 注册全局“记一笔”入口（tabBar ＋ 调用）
+    const app = getApp();
+    if (app && app.globalData) {
+      app.globalData.openExpense = () => this.openExpense('');
+    }
   },
 
   buildCalendar(d, tk) {
@@ -76,12 +83,38 @@ Page({
       if (day > today) cls += ' future';
       if (day === today) cls += ' today';
       const mk = st === 'ok' ? '✓' : st === 'bad' ? '✕' : '';
-      cells.push({ day, cls, mk });
+      cells.push({ day, ds, cls, mk });
     }
     this.setData({ cells });
   },
 
   openPlan() {
-    wx.showToast({ title: '制定计划功能开发中', icon: 'none' });
+    this.setData({ planShow: true });
+  },
+
+  // 日历 cell 点击：未记/已记且历史日期 → 打开记一笔补记
+  onCellTap(e) {
+    const ds = e.currentTarget.dataset.ds;
+    const day = e.currentTarget.dataset.day;
+    if (!day || day <= 0) return; // 空白格忽略
+    const d = ledger.load();
+    const st = dayStatus(d, ds, ledger.todayKey());
+    if (st === 'future') return; // 未来日期不可补记
+    this.openExpense(ds);
+  },
+
+  openExpense(date) {
+    this.setData({ expShow: true, expDate: date || '' });
+  },
+  closeExp() { this.setData({ expShow: false }); },
+  onExpSaved() {
+    this.setData({ expShow: false });
+    this.onShow(); // 刷新日历与计划卡
+  },
+
+  closePlan() { this.setData({ planShow: false }); },
+  onPlanSaved() {
+    this.setData({ planShow: false });
+    this.onShow();
   }
 });

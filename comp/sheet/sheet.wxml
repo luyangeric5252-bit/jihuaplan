@@ -1,0 +1,7 @@
+<view class="sheet-mask {{show?'show':''}}" bindtap="onMaskTap">
+  <view class="sheet {{show?'show':''}} {{night?'night':''}}" catchtap="noop"
+        bindtouchstart="onTouchStart" bindtouchmove="onTouchMove" bindtouchend="onTouchEnd">
+    <view class="grip" catchtouchstart="onTouchStart" catchtouchmove="onTouchMove" catchtouchend="onTouchEnd"></view>
+    <slot></slot>
+  </view>
+</view>
