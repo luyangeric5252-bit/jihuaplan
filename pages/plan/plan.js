@@ -4,7 +4,7 @@ const ledger = app.globalData.ledger;
 Page({
   data: {
     workday: '80', restday: '120', goal: '3000', goalDate: '2026-12-31',
-    bg: ['#eef1fb', '#e6e9f7'],
+    bg: ['#eef1fb', '#e6e9f7'], nightClass: '',
     weekHead: ['一', '二', '三', '四', '五', '六', '日'],
     cells: []
   },
@@ -16,7 +16,8 @@ Page({
       restday: String(Math.round(d.plans.restday)),
       goal: String(Math.round(d.plans.goal)),
       goalDate: d.plans.goalDate,
-      bg: ledger.skinBackground(d.skins.selected)
+      bg: ledger.skinBackground(d.skins.selected),
+      nightClass: ledger.isNight(d.skins.selected) ? 'night' : ''
     });
     this.buildCalendar(d);
   },

@@ -5,14 +5,15 @@ Page({
   data: {
     amount: '', cat: '餐饮', date: '', note: '',
     cats: ['餐饮', '交通', '购物', '居家', '其他'],
-    showDate: false, bg: ['#eef1fb', '#e6e9f7']
+    showDate: false, bg: ['#eef1fb', '#e6e9f7'], nightClass: ''
   },
 
   onLoad() {
     const d = ledger.load();
     this.setData({
       date: ledger.todayKey(),
-      bg: ledger.skinBackground(d.skins.selected)
+      bg: ledger.skinBackground(d.skins.selected),
+      nightClass: ledger.isNight(d.skins.selected) ? 'night' : ''
     });
   },
 

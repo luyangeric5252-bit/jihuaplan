@@ -5,7 +5,7 @@ Page({
   data: {
     dayDiff: 0, weekDiff: 0, monthDiff: 0,
     dayStr: '0', weekStr: '0', monthStr: '0',
-    bg: ['#eef1fb', '#e6e9f7']
+    bg: ['#eef1fb', '#e6e9f7'], nightClass: ''
   },
 
   onShow() {
@@ -17,7 +17,8 @@ Page({
     this.setData({
       dayDiff: day, weekDiff: week, monthDiff: month,
       dayStr: this.fmt(day), weekStr: this.fmt(week), monthStr: this.fmt(month),
-      bg: ledger.skinBackground(d.skins.selected)
+      bg: ledger.skinBackground(d.skins.selected),
+      nightClass: ledger.isNight(d.skins.selected) ? 'night' : ''
     });
   },
 

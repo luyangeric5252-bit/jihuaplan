@@ -1,4 +1,4 @@
-/* 计划经济 v2.0 全局样式 */
+/* 计划经济 v2.0 全局样式（高保真，对应 HTML 原型） */
 page {
   --card-bg: rgba(255,255,255,.55);
   --text: #1c1c2e;
@@ -7,63 +7,93 @@ page {
   --green: #0f8f63;
   --blue: #5b6cff;
   --gold: #9a6a00;
+  --line: rgba(0,0,0,.06);
   background: #eef1fb;
-  font-family: -apple-system, "PingFang SC", "Helvetica Neue", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif;
   color: var(--text);
   padding-top: env(safe-area-inset-top);
   box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
 }
 
+/* 暗夜紫变量覆盖 */
+page.night {
+  --card-bg: rgba(255,255,255,.1);
+  --text: #eef0ff;
+  --text-2: #a9acc8;
+  --line: rgba(255,255,255,.12);
+}
+
+/* 页面基础 */
+.page { min-height: 100vh; padding-top: env(safe-area-inset-top); box-sizing: border-box; }
+.head { padding: calc(env(safe-area-inset-top) + 16rpx) 36rpx 0; display: flex; align-items: center; }
+.head .title { font-size: 44rpx; font-weight: 800; letter-spacing: .5rpx; }
+.scroll { padding: 24rpx 36rpx calc(160rpx + env(safe-area-inset-bottom)); box-sizing: border-box; }
+
+/* 卡片（毛玻璃 + 阴影，对应原型 .card） */
 .card {
   background: var(--card-bg);
-  border-radius: 18rpx;
-  padding: 28rpx;
+  border-radius: 28rpx;
+  padding: 32rpx;
   box-shadow: 0 6rpx 22rpx rgba(91,108,255,.06);
   backdrop-filter: blur(20rpx);
   -webkit-backdrop-filter: blur(20rpx);
+  border: 1rpx solid rgba(255,255,255,.5);
 }
+.page.night .card, page.night .card { border-color: rgba(255,255,255,.14); }
+
+/* 行 */
 .row { display: flex; align-items: center; }
-.row .k { font-size: 28rpx; color: var(--text-2); }
-.row .v { margin-left: auto; font-size: 30rpx; font-weight: 700; }
+.row .k { font-size: 28rpx; color: var(--text-2); font-weight: 600; }
+.row .v { margin-left: auto; font-size: 32rpx; font-weight: 800; }
 .row .v.red { color: var(--red); }
 .row .v.green { color: var(--green); }
-.sub { font-size: 22rpx; color: var(--text-2); margin-top: 8rpx; }
+.sub { font-size: 22rpx; color: var(--text-2); margin-top: 8rpx; font-weight: 500; }
+.divider { height: 1rpx; background: var(--line); margin: 18rpx 0; }
 
-.pill { display: inline-flex; align-items: center; padding: 10rpx 24rpx; border-radius: 999rpx; font-size: 26rpx; font-weight: 600; }
+/* pill（对应原型 .pill） */
+.pill { display: inline-flex; align-items: center; padding: 10rpx 24rpx; border-radius: 999rpx; font-size: 26rpx; font-weight: 700; }
 .pill.red { background: rgba(255,91,110,.16); color: var(--red); }
 .pill.green { background: rgba(15,143,99,.14); color: var(--green); }
 
+/* 主按钮（对应原型 .btn） */
 .btn-primary {
   background: linear-gradient(135deg, #5b6cff, #8b97ff);
-  color: #fff; font-weight: 700; border-radius: 28rpx; padding: 28rpx;
-  text-align: center;
+  color: #fff; font-weight: 800; border-radius: 28rpx; padding: 30rpx;
+  text-align: center; font-size: 32rpx;
+  box-shadow: 0 8rpx 22rpx rgba(91,108,255,.35);
 }
-.btn-primary:active { opacity: .85; }
+.btn-primary:active { opacity: .85; transform: scale(.99); }
+.btn-ghost {
+  background: rgba(0,0,0,.04); color: var(--text-2); font-weight: 700;
+  border-radius: 28rpx; padding: 26rpx; text-align: center; font-size: 30rpx;
+}
+.page.night .btn-ghost { background: rgba(255,255,255,.1); color: #aab4ff; }
 
-.divider { height: 1rpx; background: rgba(0,0,0,.06); margin: 16rpx 0; }
-
-/* 记账中央按钮凸起 */
-.fab-wrap { position: fixed; left: 0; right: 0; bottom: 0; display: flex; justify-content: center; z-index: 50; pointer-events: none; }
+/* 记账中央按钮（tabBar 占位，凸起） */
+.fab-wrap { position: fixed; left: 0; right: 0; bottom: calc(env(safe-area-inset-bottom) + 20rpx); display: flex; justify-content: center; z-index: 50; pointer-events: none; }
 .fab {
   pointer-events: auto;
-  width: 112rpx; height: 112rpx; border-radius: 50%;
+  width: 104rpx; height: 104rpx; border-radius: 50%;
   background: linear-gradient(135deg, #5b6cff, #8b97ff);
   display: flex; align-items: center; justify-content: center;
-  color: #fff; font-size: 64rpx; font-weight: 300;
+  color: #fff; font-size: 60rpx; font-weight: 300;
   box-shadow: 0 8rpx 24rpx rgba(91,108,255,.4);
-  margin-bottom: 40rpx;
+  margin-bottom: 20rpx;
 }
-.fab:active { transform: scale(.94); }
+.fab:active { transform: scale(.92); }
 
-/* 弹框（对应原型 .sheet，跟皮肤色） */
-.sheet-mask { position: fixed; inset: 0; background: rgba(0,0,0,.4); z-index: 100; display: flex; align-items: flex-end; }
+/* 弹框（对应原型 .sheet） */
+.sheet-mask { position: fixed; inset: 0; background: rgba(20,20,40,.4); z-index: 100; display: flex; align-items: flex-end; }
 .sheet {
-  width: 100%; border-radius: 32rpx 32rpx 0 0; padding: 40rpx 32rpx calc(40rpx + env(safe-area-inset-bottom));
+  width: 100%; border-radius: 36rpx 36rpx 0 0; padding: 40rpx 32rpx calc(40rpx + env(safe-area-inset-bottom));
+  background: var(--card-bg);
   animation: slideUp .3s cubic-bezier(.22,1,.36,1);
 }
 @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+.page.night .sheet { background: rgba(28,28,46,.96); color: #eef0ff; border-top: 1rpx solid rgba(255,255,255,.16); }
 
-/* 储蓄罐（对应原型 .jar 三态边框） */
+/* 储蓄罐（对应原型 .jar 三态 + 金币） */
 .jar {
   position: relative; height: 440rpx; border-radius: 44rpx; overflow: hidden;
   border: 4rpx solid transparent;
@@ -91,16 +121,15 @@ page {
 }
 .jar.red .fill { background: linear-gradient(180deg, rgba(255,122,136,.85), rgba(255,91,110,.8)); }
 .jar .float {
-  position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 2;
 }
-.jar .float .n { font-size: 80rpx; font-weight: 900; color: #9a6a00; letter-spacing: 1rpx;
+.jar .float .n { font-size: 76rpx; font-weight: 900; color: #9a6a00; letter-spacing: 1rpx;
   text-shadow: 0 2rpx 0 rgba(255,235,160,.6), 0 4rpx 16rpx rgba(180,120,0,.25); }
-.jar .float .s { font-size: 22rpx; color: #7a7a92; margin-top: 8rpx; }
-/* 暗夜紫储蓄罐数字：白填充 + 金描边（对应原型 .skin-night .jar .float .n） */
-.jar.night .float .n { color: #fff; -webkit-text-stroke: 2rpx #d4af37; text-shadow: 0 4rpx 16rpx rgba(200,150,0,.4); }
-.jar.night .float .s { color: rgba(255,255,255,.85); }
+.jar .float .s { font-size: 22rpx; color: #7a7a92; margin-top: 8rpx; font-weight: 500; }
+.page.night .jar .float .n { color: #fff; -webkit-text-stroke: 2rpx #d4af37; text-shadow: 0 4rpx 16rpx rgba(200,150,0,.4); }
+.page.night .jar .float .s { color: rgba(255,255,255,.85); }
 
-/* 金币下落（对应原型 .coin / coinRain） */
+/* 金币下落 */
 .coin {
   position: absolute; top: -60rpx; width: 44rpx; height: 44rpx; border-radius: 50%;
   background: radial-gradient(circle at 35% 30%, #fff6cf, #ffd24d 55%, #e8a200);
@@ -115,4 +144,11 @@ page {
 }
 
 /* 统计内页返回 */
-.nav-back { font-size: 30rpx; color: var(--blue); }
+.nav-back { font-size: 32rpx; color: var(--blue); font-weight: 600; }
+.page.night .nav-back { color: #aab4ff; }
+
+.tip { font-size: 22rpx; color: var(--text-2); font-weight: 500; }
+.green-txt { color: var(--green); }
+.red-txt { color: var(--red); }
+.blue-txt { color: var(--blue); }
+.page.night .blue-txt { color: #aab4ff; }

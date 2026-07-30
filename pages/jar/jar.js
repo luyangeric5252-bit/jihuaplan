@@ -4,7 +4,7 @@ const ledger = app.globalData.ledger;
 Page({
   data: {
     net: 0, pct: 0, jarCls: '', savedActive: 0, savedCarry: 0, dayDiff: 0,
-    showDetail: false, logs: [], coins: [], bg: ['#eef1fb', '#e6e9f7'], sheetBg: '#eef1fb'
+    showDetail: false, logs: [], coins: [], bg: ['#eef1fb', '#e6e9f7'], sheetBg: '#eef1fb', nightClass: ''
   },
 
   onShow() {
@@ -23,7 +23,8 @@ Page({
       savedActive: d.savedActive.toFixed(1), savedCarry: d.savedCarry.toFixed(1),
       dayDiff: Math.round(ledger.dayDiff(d) * 10) / 10,
       bg: ledger.skinBackground(d.skins.selected),
-      sheetBg: ledger.sheetBackground(d.skins.selected)
+      sheetBg: ledger.sheetBackground(d.skins.selected),
+      nightClass: isNight ? 'night' : ''
     });
   },
 

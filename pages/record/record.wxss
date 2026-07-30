@@ -1,15 +1,12 @@
-.page { min-height: 100vh; }
-.head { padding: 24rpx 36rpx 0; display: flex; align-items: center; }
-.head .title { font-size: 40rpx; font-weight: 800; margin-left: 24rpx; }
-.scroll { padding: 24rpx 36rpx 160rpx; }
-.amount { display: flex; align-items: center; justify-content: center; padding: 40rpx 0; }
+.amount { display: flex; align-items: center; justify-content: center; padding: 48rpx 0; }
 .amount .cur { font-size: 72rpx; font-weight: 800; color: var(--text-2); }
-.amount .amt { font-size: 88rpx; font-weight: 900; text-align: center; min-width: 200rpx; }
+.amount .amt { font-size: 96rpx; font-weight: 900; text-align: center; min-width: 200rpx; }
 .cat-grid { display: flex; flex-wrap: wrap; gap: 20rpx; }
 .cat {
-  padding: 18rpx 36rpx; border-radius: 20rpx; background: rgba(0,0,0,.04);
-  font-size: 28rpx; color: var(--text);
+  padding: 18rpx 40rpx; border-radius: 22rpx; background: rgba(0,0,0,.04);
+  font-size: 28rpx; color: var(--text); font-weight: 600;
 }
-.cat.on { background: #5b6cff; color: #fff; }
+.cat.on { background: #5b6cff; color: #fff; font-weight: 700; }
+.page.night .cat { background: rgba(255,255,255,.1); color: #eef0ff; }
 .note { font-size: 28rpx; }
 .picker-box { margin-top: 16rpx; font-size: 26rpx; color: var(--text-2); }

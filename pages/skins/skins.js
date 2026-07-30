@@ -4,7 +4,7 @@ const ledger = app.globalData.ledger;
 Page({
   data: {
     selected: 'aurora',
-    bg: ['#eef1fb', '#e6e9f7'],
+    bg: ['#eef1fb', '#e6e9f7'], nightClass: '',
     skins: [
       { id: 'aurora', name: '极光蓝', g: ['#eef1fb', '#e6e9f7'] },
       { id: 'sunset', name: '日落橙', g: ['#fff3e6', '#ffe9d6'] },
@@ -19,7 +19,8 @@ Page({
     const d = ledger.load();
     this.setData({
       selected: d.skins.selected,
-      bg: ledger.skinBackground(d.skins.selected)
+      bg: ledger.skinBackground(d.skins.selected),
+      nightClass: ledger.isNight(d.skins.selected) ? 'night' : ''
     });
   },
 
