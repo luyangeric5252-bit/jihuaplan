@@ -1,18 +1,53 @@
-.title-sm { font-size: 30rpx; font-weight: 700; margin-bottom: 18rpx; display: block; }
-.inp { flex: 1; text-align: right; margin: 0 16rpx; font-size: 30rpx; color: var(--text); }
-.unit { font-size: 22rpx; color: var(--text-2); width: 90rpx; text-align: right; }
-.tip { display:block; font-size: 22rpx; color: var(--text-2); margin-top: 16rpx; text-align:center; }
+/* 头部（对齐 HTML .head：date + big） */
+.head { display: flex; flex-direction: column; gap: 4rpx; }
+.head .date { font-size: 24rpx; color: var(--text-2); font-weight: 700; }
+.head .big { font-size: 42rpx; font-weight: 800; letter-spacing: 1rpx; }
 
-.weekrow { display: flex; margin-top: 20rpx; }
-.weekrow .wd { flex: 1; text-align: center; font-size: 22rpx; color: var(--text-2); }
-.grid { display: flex; flex-wrap: wrap; margin-top: 12rpx; }
-.cell {
-  width: 14.28%; height: 76rpx; display: flex; align-items: center; justify-content: center;
-  font-size: 26rpx; box-sizing: border-box; color: var(--text);
-}
-.cell.ok { color: #2fd99a; background: rgba(47,217,154,.16); border-radius: 14rpx; }
-.cell.bad { color: #ff6b7d; background: rgba(255,107,125,.18); border-radius: 14rpx; }
-.cell.today { color: #aab4ff; border: 2rpx solid #aab4ff; border-radius: 14rpx; }
-.page.night .cell { color: #eef0ff; }
-.page.night .cell.ok { background: rgba(47,217,154,.28); }
-.page.night .cell.bad { background: rgba(255,107,125,.28); }
+/* 计划卡片（对齐 HTML .card.tint） */
+.card.tint { color: #fff; border-color: rgba(255,255,255,.7); }
+.card.tint .lbl { font-size: 24rpx; opacity: .92; font-weight: 700; }
+.card.tint .val { font-size: 50rpx; font-weight: 800; margin: 10rpx 0 6rpx; }
+.card.tint .sub { font-size: 24rpx; opacity: .9; font-weight: 600; color: rgba(255,255,255,.92); }
+.card.tint.amber { color: #5a3c00; }
+.card.tint.amber .sub { color: #7a5a1a; }
+.card.tint.blue { background: linear-gradient(135deg, rgba(91,108,255,.55), rgba(139,151,255,.5)); }
+.card.tint.green { background: linear-gradient(135deg, rgba(39,192,138,.85), rgba(70,214,163,.8)); }
+.card.tint.amber { background: linear-gradient(135deg, rgba(255,176,32,.88), rgba(255,194,77,.82)); }
+
+/* 日历（对齐 HTML .cal-head / .cal / .cell） */
+.cal-head { display: grid; grid-template-columns: repeat(7,1fr); gap: 8rpx; margin-bottom: 8rpx; }
+.cal-head text { text-align: center; font-size: 22rpx; font-weight: 800; color: var(--text-2); }
+.cal { display: grid; grid-template-columns: repeat(7,1fr); gap: 8rpx; }
+.cal .cell { border-radius: 20rpx; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 12rpx 0; font-weight: 800; background: rgba(255,255,255,.4); border: 1rpx solid rgba(255,255,255,.6); position: relative; min-height: 72rpx; }
+.cal .cell .d { font-size: 28rpx; font-weight: 800; color: #1c1c2e; line-height: 1; }
+.cal .cell .mk { font-size: 18rpx; margin-top: 2rpx; line-height: 1; }
+.cal .cell.ok { background: linear-gradient(135deg, #27c08a, #46d6a3); }
+.cal .cell.ok .d, .cal .cell.ok .mk { color: #fff; }
+.cal .cell.bad { background: linear-gradient(135deg, #ff7a88, #ff5b6e); }
+.cal .cell.bad .d, .cal .cell.bad .mk { color: #fff; }
+.cal .cell.empty { background: transparent; border: none; min-height: auto; padding: 0; }
+.cal .cell.future { opacity: .35; }
+.cal .cell.today { border: 3rpx solid #5b6cff; box-shadow: 0 0 0 3rpx rgba(91,108,255,.25); }
+.cal .cell.none .d { color: #1c1c2e; }
+
+/* 图例（对齐 HTML .cal-legend） */
+.cal-legend { display: flex; gap: 20rpx; margin-top: 16rpx; justify-content: center; flex-wrap: wrap; }
+.cal-legend .li { display: flex; align-items: center; gap: 8rpx; font-size: 22rpx; color: var(--text-2); font-weight: 700; }
+.cal-legend .sw { width: 20rpx; height: 20rpx; border-radius: 6rpx; }
+.cal-legend .sw.ok { background: linear-gradient(135deg, #27c08a, #46d6a3); }
+.cal-legend .sw.bad { background: linear-gradient(135deg, #ff7a88, #ff5b6e); }
+.cal-legend .sw.none { background: rgba(255,255,255,.5); }
+
+/* 制定计划按钮（对齐 HTML .btn.ghost） */
+.btn.ghost { background: rgba(255,255,255,.5); color: #5b6cff; box-shadow: none; }
+
+/* 暗夜模式 */
+.page.night .cal .cell { background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.22); }
+.page.night .cal .cell .d { color: #eef0ff; }
+.page.night .cal .cell.none .d { color: #eef0ff; }
+.page.night .cal .cell.today { border-color: #aab4ff; box-shadow: 0 0 0 3rpx rgba(170,180,255,.4); }
+.page.night .cal .cell.ok { background: linear-gradient(135deg, #2fd99a, #46e8b0); }
+.page.night .cal .cell.bad { background: linear-gradient(135deg, #ff6b7d, #ff4d63); }
+.page.night .cal-legend .li { color: #a9acc8; }
+.page.night .cal-legend .sw.none { background: rgba(255,255,255,.3); }
+.page.night .btn.ghost { color: #aab4ff; background: rgba(255,255,255,.1); }
