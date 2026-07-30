@@ -20,6 +20,10 @@ Page({
       nightClass: ledger.isNight(d.skins.selected) ? 'night' : ''
     });
     this.buildCalendar(d);
+    const night = ledger.isNight(d.skins.selected);
+    if (typeof this.getTabBar === 'function' && this.getTabBar()) {
+      this.getTabBar().setData({ selected: 'plan', night });
+    }
   },
 
   onWork(e) { this.savePlan('workday', e.detail.value); },

@@ -1,4 +1,38 @@
-.page { min-height: 100vh; }
-.head { padding: 24rpx 36rpx 0; }
-.title { font-size: 40rpx; font-weight: 800; }
-.scroll { padding: 24rpx 36rpx 160rpx; }
+.page { min-height: 100vh; padding-top: env(safe-area-inset-top); box-sizing: border-box; }
+
+/* 头部：日期 + 大标题（对应 HTML .head） */
+.head {
+  padding: calc(env(safe-area-inset-top) + 16rpx) 36rpx 8rpx;
+  display: flex; flex-direction: column; gap: 6rpx;
+}
+.head .date { font-size: 24rpx; color: var(--text-2); font-weight: 700; }
+.head .big { font-size: 42rpx; font-weight: 800; letter-spacing: 1rpx; }
+
+.scroll { padding: 12rpx 36rpx calc(190rpx + env(safe-area-inset-bottom)); box-sizing: border-box; }
+
+/* 进度条（对应 HTML .progress） */
+.progress {
+  height: 18rpx; border-radius: 999rpx; background: rgba(255,255,255,.5);
+  overflow: hidden; margin-top: 20rpx;
+}
+.page.night .progress { background: rgba(255,255,255,.14); }
+.progress .bar {
+  display: block; height: 100%; border-radius: 999rpx;
+  background: linear-gradient(90deg,#5b6cff,#8b97ff);
+  transition: width .5s ease;
+}
+.progress.over .bar { background: linear-gradient(90deg,#ff7a88,#ff5b6e); }
+
+/* chips（对应 HTML .chip） */
+.chip {
+  display: inline-flex; align-items: center; gap: 12rpx;
+  padding: 18rpx 26rpx; border-radius: 30rpx;
+  background: rgba(255,255,255,.55); border: 1rpx solid rgba(255,255,255,.7);
+  font-size: 26rpx; font-weight: 800; color: #1c1c2e;
+  margin: 0 16rpx 18rpx 0;
+}
+.page.night .chip { background: rgba(255,255,255,.14); border-color: rgba(255,255,255,.22); color: #eef0ff; }
+.chip .e { font-size: 30rpx; }
+
+.empty { font-size: 26rpx; color: var(--text-2); font-weight: 600; padding: 8rpx 0; }
+

@@ -26,6 +26,9 @@ Page({
       sheetBg: ledger.sheetBackground(d.skins.selected),
       nightClass: isNight ? 'night' : ''
     });
+    if (typeof this.getTabBar === 'function' && this.getTabBar()) {
+      this.getTabBar().setData({ selected: 'jar', night: isNight });
+    }
   },
 
   // 主动存钱 + 金币（对应原型 doSave + coinRain）

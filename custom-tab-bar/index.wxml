@@ -1,0 +1,17 @@
+<view class="tabbar {{night?'night':''}}">
+  <view class="tab {{selected==='today'?'on':''}}" data-go="today" bindtap="onTap">
+    <view class="ic">🏠</view><text>今天</text>
+  </view>
+  <view class="tab {{selected==='plan'?'on':''}}" data-go="plan" bindtap="onTap">
+    <view class="ic">📋</view><text>计划</text>
+  </view>
+  <view class="tab add" data-go="record" bindtap="onTap">
+    <view class="ic">＋</view>
+  </view>
+  <view class="tab {{selected==='jar'?'on':''}}" data-go="jar" bindtap="onTap">
+    <view class="ic">🏺</view><text>储蓄罐</text>
+  </view>
+  <view class="tab {{selected==='skins'?'on':''}}" data-go="skins" bindtap="onTap">
+    <view class="ic">🎨</view><text>皮肤</text>
+  </view>
+</view>

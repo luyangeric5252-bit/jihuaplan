@@ -1,37 +1,60 @@
 <view class="page {{nightClass}}" style="background: linear-gradient(160deg, {{bg[0]}}, {{bg[1]}});">
+  <!-- 头部：日期 + 大标题 -->
   <view class="head">
-    <text class="title">今天</text>
+    <text class="date">{{dateStr}} 周{{weekday}}</text>
+    <text class="big">今天的花销</text>
   </view>
 
   <scroll-view scroll-y class="scroll">
-    <!-- 今日结余 pill -->
-    <view style="text-align:center; margin: 24rpx 0;">
-      <view class="pill {{dayDiff<0?'red':'green'}}">
-        {{dayDiff<0? '⚠ 今日赤字 ¥'+dayStr : '✓ 今日结余 ¥'+dayStr}}
+    <!-- 综合卡片：已花 / 日预算 / 剩余可花 + 进度条 + 结余 pill -->
+    <view class="card">
+      <view class="row">
+        <text class="k">已花</text>
+        <text class="v">¥{{ds}}</text>
+      </view>
+      <view class="row" style="margin-top:18rpx;">
+        <text class="k">日预算</text>
+        <text class="v">{{dayBudgetStr}}</text>
+      </view>
+      <view class="row" style="margin-top:18rpx;">
+        <text class="k">剩余可花</text>
+        <text class="v {{dayDiff<0?'red':''}}">{{dayDiff<0?'-':'+¥'}}{{dayStr}}</text>
+      </view>
+      <view class="progress {{dayDiff<0?'over':''}}">
+        <view class="bar" style="width:{{dayDiff<0?100:ds>0?(ds*100)+'%':'0%'}}"></view>
+      </view>
+      <view style="margin-top:18rpx;">
+        <view class="pill {{dayDiff<0?'red':'green'}}">
+          {{dayDiff<0? '⚠ 今日赤字 ¥'+dayStr : '✓ 今日结余 ¥'+dayStr}}
+        </view>
       </view>
     </view>
 
-    <!-- 本周/本月 -->
+    <!-- 本周 / 本月 -->
     <view class="card">
       <view class="row">
         <text class="k">本周（一~日）</text>
-        <text class="v {{weekDiff<0?'red':''}}">{{weekDiff<0?'-':''}}¥{{weekStr}}</text>
+        <text class="v {{weekDiff<0?'red':''}}">{{weekDiff<0?'-':'+¥'}}{{weekStr}}</text>
       </view>
       <view class="sub">预算剩余（周预算−本周已花）</view>
       <view class="divider"></view>
       <view class="row" style="margin-top:18rpx;">
         <text class="k">本月</text>
-        <text class="v {{monthDiff<0?'red':''}}">{{monthDiff<0?'-':''}}¥{{monthStr}}</text>
+        <text class="v {{monthDiff<0?'red':''}}">{{monthDiff<0?'-':'+¥'}}{{monthStr}}</text>
       </view>
       <view class="sub">预算剩余（月预算−本月已花）</view>
     </view>
 
-    <!-- 今日剩余可花 -->
-    <view class="card" style="margin-top:24rpx;">
-      <view class="row">
-        <text class="k">剩余可花</text>
-        <text class="v {{dayDiff<0?'red':''}}">{{dayDiff<0?'-':'+'}}¥{{dayStr}}</text>
-      </view>
+    <!-- 今日消费 chips -->
+    <view class="card">
+      <text class="k" style="font-size:26rpx;color:var(--text-2);font-weight:700;display:block;margin-bottom:18rpx;">今日消费</text>
+      <block wx:if="{{chips.length}}">
+        <view wx:for="{{chips}}" wx:key="index" class="chip">
+          <text class="e">{{item.emoji}}</text>
+          <text>{{item.cat}} ¥{{item.amount}}</text>
+        </view>
+      </block>
+      <view wx:else class="empty">今天还没记账，点中间 ＋ 记一笔</view>
     </view>
   </scroll-view>
 </view>

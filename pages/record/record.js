@@ -17,6 +17,18 @@ Page({
     });
   },
 
+  onShow() {
+    const d = ledger.load();
+    const night = ledger.isNight(d.skins.selected);
+    this.setData({
+      bg: ledger.skinBackground(d.skins.selected),
+      nightClass: night ? 'night' : ''
+    });
+    if (typeof this.getTabBar === 'function' && this.getTabBar()) {
+      this.getTabBar().setData({ selected: 'record', night });
+    }
+  },
+
   onAmt(e) { this.setData({ amount: e.detail.value }); },
   pickCat(e) { this.setData({ cat: e.currentTarget.dataset.c }); },
   onNote(e) { this.setData({ note: e.detail.value }); },

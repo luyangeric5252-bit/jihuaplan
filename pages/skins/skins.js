@@ -22,6 +22,10 @@ Page({
       bg: ledger.skinBackground(d.skins.selected),
       nightClass: ledger.isNight(d.skins.selected) ? 'night' : ''
     });
+    const night = ledger.isNight(d.skins.selected);
+    if (typeof this.getTabBar === 'function' && this.getTabBar()) {
+      this.getTabBar().setData({ selected: 'skins', night });
+    }
   },
 
   pick(e) {
