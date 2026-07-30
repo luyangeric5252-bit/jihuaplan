@@ -7,10 +7,10 @@ Page({
     bg: '#eef1fb', nightClass: '',
     skins: [
       { id: 'aurora', name: '极光蓝', g: ['#eef1fb', '#e6e9f7'], bg: ledger.skinBackground('aurora') },
+      { id: 'night',  name: '暗夜紫', g: ['#1c1c2e', '#2a2a44'], bg: ledger.skinBackground('night') },
       { id: 'sunset', name: '日落橙', g: ['#fff3e6', '#ffe9d6'], bg: ledger.skinBackground('sunset') },
       { id: 'mint',   name: '薄荷绿', g: ['#eafff4', '#dcfcec'], bg: ledger.skinBackground('mint') },
       { id: 'sakura', name: '樱花粉', g: ['#fff0f6', '#ffe6f0'], bg: ledger.skinBackground('sakura') },
-      { id: 'night',  name: '暗夜紫', g: ['#1c1c2e', '#2a2a44'], bg: ledger.skinBackground('night') },
       { id: 'gold',   name: '流金',   g: ['#fff8e6', '#fff0c8'], bg: ledger.skinBackground('gold') }
     ]
   },

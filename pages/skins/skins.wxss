@@ -3,19 +3,19 @@
 /* 一行两个自适应（对应 HTML .skin-grid，用 grid 自动等分列宽） */
 .skin-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24rpx; }
 
-/* 皮肤卡片（对应 HTML .skin） */
-.skin { position: relative; aspect-ratio: 3 / 4; min-height: 260rpx; border-radius: 40rpx; overflow: hidden; box-sizing: border-box; border: 4rpx solid transparent; box-shadow: 0 24rpx 64rpx rgba(40,44,90,.18); }
-.skin.sel { border-color: #ffffff; box-shadow: 0 0 0 6rpx #5b6cff, 0 24rpx 64rpx rgba(40,44,90,.18); }
+/* 皮肤卡片（高度缩短一半） */
+.skin { position: relative; aspect-ratio: 3 / 2; min-height: 130rpx; border-radius: 32rpx; overflow: hidden; box-sizing: border-box; border: 4rpx solid transparent; box-shadow: 0 16rpx 40rpx rgba(40,44,90,.18); }
+.skin.sel { border-color: #ffffff; box-shadow: 0 0 0 6rpx #5b6cff, 0 16rpx 40rpx rgba(40,44,90,.18); }
 
-.skin .prev { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: 22rpx; }
-.skin .prev .mc { height: 84rpx; border-radius: 24rpx; background: rgba(255,255,255,.42); border: 1rpx solid rgba(255,255,255,.6); margin-bottom: 16rpx; }
-.skin .prev .nm { font-size: 26rpx; font-weight: 800; color: #fff; text-shadow: 0 2rpx 8rpx rgba(0,0,0,.35); }
+.skin .prev { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: 14rpx; }
+.skin .prev .mc { height: 44rpx; border-radius: 16rpx; background: rgba(255,255,255,.42); border: 1rpx solid rgba(255,255,255,.6); margin-bottom: 10rpx; }
+.skin .prev .nm { font-size: 24rpx; font-weight: 800; color: #fff; text-shadow: 0 2rpx 8rpx rgba(0,0,0,.35); }
 
 /* 免费标签（对应 HTML .pr.free） */
-.skin .pr { position: absolute; top: 20rpx; right: 20rpx; font-size: 22rpx; font-weight: 800; color: #fff; background: rgba(39,192,138,.88); padding: 6rpx 18rpx; border-radius: 24rpx; }
+.skin .pr { position: absolute; top: 14rpx; right: 14rpx; font-size: 20rpx; font-weight: 800; color: #fff; background: rgba(39,192,138,.88); padding: 4rpx 14rpx; border-radius: 20rpx; }
 
 /* 选中对勾 */
-.skin .check { position: absolute; top: 20rpx; left: 20rpx; width: 52rpx; height: 52rpx; border-radius: 50%; background: #5b6cff; color: #fff; font-size: 30rpx; text-align: center; line-height: 52rpx; box-shadow: 0 8rpx 20rpx rgba(91,108,255,.45); }
+.skin .check { position: absolute; top: 14rpx; left: 14rpx; width: 44rpx; height: 44rpx; border-radius: 50%; background: #5b6cff; color: #fff; font-size: 26rpx; text-align: center; line-height: 44rpx; box-shadow: 0 8rpx 20rpx rgba(91,108,255,.45); }
 
 /* 暗夜皮肤下名称描边增强可读性 */
 .page.night .skin .prev .nm { color: #eef0ff; }
