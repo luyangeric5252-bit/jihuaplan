@@ -1,7 +1,7 @@
 <view class="page {{nightClass}}" style="background: {{bg}};">
-  <view class="head">
-    <text class="date">我的节流计划</text>
-    <text class="big">计划经济</text>
+  <view class="head-bar">
+    <text class="h-title">计划经济</text>
+    <text class="h-sub">我的节流计划</text>
   </view>
 
   <scroll-view scroll-y class="scroll">

@@ -1,8 +1,8 @@
 <view class="page {{nightClass}}" style="background: {{bg}};">
-  <!-- 头部：大标题在上、日期在下（与状态栏同高，胶囊居右避让） -->
-  <view class="head">
-    <text class="big">今天的花销</text>
-    <text class="date">{{dateStr}} 周{{weekday}}</text>
+  <!-- 头部导航条：标题左上、副标题(当天日期)居中、与胶囊同行 -->
+  <view class="head-bar">
+    <text class="h-title">今天的花销</text>
+    <text class="h-sub">{{dateStr}} 周{{weekday}}</text>
   </view>
 
   <scroll-view scroll-y class="scroll">

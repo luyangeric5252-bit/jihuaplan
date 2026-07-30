@@ -1,10 +1,8 @@
 <view class="page {{nightClass}}" style="background: {{bg}};">
-  <view class="head">
-    <view class="head-l">
-      <text class="date">计划储蓄罐</text>
-      <text class="big">我的储蓄</text>
-    </view>
-    <text class="head-action" bindtap="openStats">统计 ›</text>
+  <view class="head-bar">
+    <text class="h-title">我的储蓄</text>
+    <text class="h-sub">计划储蓄罐</text>
+    <text class="h-right" bindtap="openStats">统计 ›</text>
   </view>
 
   <scroll-view scroll-y class="scroll">

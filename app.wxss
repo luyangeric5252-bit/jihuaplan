@@ -35,6 +35,29 @@ page.night {
   flex-shrink: 0;
 }
 .head .title { font-size: 44rpx; font-weight: 800; letter-spacing: .5rpx; }
+
+/* 顶部导航条：标题左上、副标题居中、右侧槽位（与胶囊同行） */
+.head-bar {
+  position: relative;
+  height: 88rpx;
+  padding-top: env(safe-area-inset-top);
+  flex-shrink: 0;
+  display: flex; align-items: center;
+}
+.head-bar .h-title {
+  position: absolute; left: 36rpx;
+  font-size: 40rpx; font-weight: 800; letter-spacing: 1rpx; color: var(--text);
+}
+.head-bar .h-sub {
+  position: absolute; left: 50%; transform: translateX(-50%);
+  font-size: 24rpx; font-weight: 700; color: var(--text-2);
+}
+.head-bar .h-right {
+  position: absolute; right: calc(180rpx + 16rpx);
+  font-size: 24rpx; font-weight: 800; color: #5b6cff;
+  background: rgba(91,108,255,.12); padding: 8rpx 20rpx; border-radius: 22rpx;
+}
+.page.night .head-bar .h-right { color: #aab4ff; background: rgba(170,180,255,.18); }
 .scroll { flex: 1; overflow-y: auto; padding: 40rpx 36rpx calc(180rpx + env(safe-area-inset-bottom)); box-sizing: border-box; }
 
 /* 卡片（毛玻璃 + 阴影，对齐 HTML 原型 .card） */
