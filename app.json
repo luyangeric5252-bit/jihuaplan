@@ -4,6 +4,7 @@
     "pages/plan/plan",
     "pages/record/record",
     "pages/jar/jar",
+    "pages/jar-detail/jar-detail",
     "pages/skins/skins",
     "pages/stats/stats"
   ],

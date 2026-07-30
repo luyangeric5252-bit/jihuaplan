@@ -1,0 +1,11 @@
+.head-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16rpx; }
+.ttl { font-size: 34rpx; font-weight: 800; }
+.pill.brand { background: rgba(91,108,255,.16); color: #5b6cff; font-size: 22rpx; font-weight: 800; padding: 6rpx 18rpx; border-radius: 999rpx; }
+
+.amount { font-size: 64rpx; font-weight: 800; text-align: center; margin: 8rpx 0 20rpx; display: flex; align-items: center; justify-content: center; }
+.amount .cur { font-size: 48rpx; margin-right: 8rpx; }
+.amount .amt { font-size: 64rpx; font-weight: 800; text-align: center; min-width: 200rpx; }
+
+.btn-primary { background: linear-gradient(135deg, #5b6cff, #8b97ff); color: #fff; font-weight: 800; border-radius: 28rpx; padding: 30rpx; text-align: center; font-size: 32rpx; box-shadow: 0 8rpx 22rpx rgba(91,108,255,.35); }
+.btn-ghost { background: rgba(0,0,0,.04); color: var(--text-2, #7a7a92); font-weight: 700; border-radius: 28rpx; padding: 26rpx; text-align: center; font-size: 30rpx; }
+.sheet.night .btn-ghost { background: rgba(255,255,255,.1); color: #aab4ff; }

@@ -103,7 +103,7 @@ page.night {
 
 /* 储蓄罐（对应原型 .jar 三态 + 金币） */
 .jar {
-  position: relative; height: 440rpx; border-radius: 44rpx; overflow: hidden;
+  position: relative; height: 380rpx; border-radius: 44rpx; overflow: hidden;
   border: 4rpx solid transparent;
   background:
     linear-gradient(rgba(255,255,255,.3), rgba(255,255,255,.3)) padding-box,

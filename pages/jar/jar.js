@@ -3,9 +3,10 @@ const ledger = app.globalData.ledger;
 
 Page({
   data: {
-    net: 0, pct: 0, jarCls: '', savedActive: 0, savedCarry: 0, dayDiff: 0,
-    showDetail: false, logs: [], coins: [], bg: '#eef1fb', sheetBg: '#eef1fb', nightClass: '',
-    expShow: false
+    net: 0, net0: 0, pct: 0, jarCls: '', savedActive: 0, savedCarry: 0, dayDiff: 0, goal: 0,
+    reached: false,
+    bg: '#eef1fb', nightClass: '',
+    saveShow: false, expShow: false
   },
 
   onShow() {
@@ -20,41 +21,48 @@ Page({
     else if (net >= goal) jarCls = 'done';
     if (isNight) jarCls += ' night';
     this.setData({
-      net: net.toFixed(1), pct, jarCls,
+      net: net.toFixed(1), net0: Math.round(net), pct, jarCls,
       savedActive: d.savedActive.toFixed(1), savedCarry: d.savedCarry.toFixed(1),
       dayDiff: Math.round(ledger.dayDiff(d) * 10) / 10,
+      goal: Math.round(goal), reached: net >= goal,
       bg: ledger.skinBackground(d.skins.selected),
-      sheetBg: ledger.sheetBackground(d.skins.selected),
       nightClass: isNight ? 'night' : ''
     });
     if (typeof this.getTabBar === 'function' && this.getTabBar()) {
       this.getTabBar().setData({ selected: 'jar', night: isNight });
     }
     wx.setStatusBarStyle({ style: isNight ? 'light' : 'dark' });
-    const app = getApp();
-    if (app && app.globalData) {
-      app.globalData.openExpense = () => this.setData({ expShow: true });
+    const g = getApp();
+    if (g && g.globalData) {
+      g.globalData.openExpense = () => this.setData({ expShow: true });
     }
   },
 
   closeExp() { this.setData({ expShow: false }); },
-  onExpSaved() {
-    this.setData({ expShow: false });
-    this.onShow();
-  },
+  onExpSaved() { this.setData({ expShow: false }); this.onShow(); },
 
-  // 主动存钱 + 金币（对应原型 doSave + coinRain）
-  doSave() {
-    const d = ledger.load();
-    ledger.doSave(d, 50);
+  // 主动存钱：打开输入金额弹框
+  openSave() { this.setData({ saveShow: true }); },
+  closeSave() { this.setData({ saveShow: false }); },
+  onSaveSaved() {
+    this.setData({ saveShow: false });
     this.dropCoins();
     this.onShow();
   },
 
   doReset() {
     wx.showModal({
-      title: '确认重置', content: '将清空主动存钱记录', success: (r) => {
+      title: '确认清空', content: '将清空储蓄罐（主动存钱 + 历史固化结余）', success: (r) => {
         if (r.confirm) { const d = ledger.load(); ledger.doResetActive(d); this.onShow(); }
+      }
+    });
+  },
+
+  // 数据混乱？按记录重算（对应原型 recomputeAll）
+  recomputeAll() {
+    wx.showModal({
+      title: '按记录重算', content: '将根据所有记账记录重新计算固化结余', success: (r) => {
+        if (r.confirm) { const d = ledger.load(); ledger.recomputeCarry(d); this.onShow(); wx.showToast({ title: '已重算', icon: 'none' }); }
       }
     });
   },
@@ -68,16 +76,6 @@ Page({
     setTimeout(() => this.setData({ coins: [] }), 1200);
   },
 
-  openDetail() {
-    const d = ledger.load();
-    const logs = d.savedActiveLog.slice().sort((a, b) => b.ts - a.ts);
-    this.setData({
-      showDetail: true, logs,
-      sheetBg: ledger.sheetBackground(d.skins.selected)
-    });
-  },
-  closeDetail() { this.setData({ showDetail: false }); },
-  noop() {},
-
+  openDetail() { wx.navigateTo({ url: '/pages/jar-detail/jar-detail' }); },
   openStats() { wx.navigateTo({ url: '/pages/stats/stats' }); }
 });

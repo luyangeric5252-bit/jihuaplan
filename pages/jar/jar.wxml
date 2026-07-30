@@ -1,5 +1,11 @@
 <view class="page {{nightClass}}" style="background: {{bg}};">
-  <view class="head"><text class="title">储蓄罐</text></view>
+  <view class="head">
+    <view class="head-l">
+      <text class="date">计划储蓄罐</text>
+      <text class="big">我的储蓄</text>
+    </view>
+    <text class="head-action" bindtap="openStats">统计 ›</text>
+  </view>
 
   <scroll-view scroll-y class="scroll">
     <!-- 储蓄罐 -->
@@ -9,61 +15,40 @@
         <text class="n">¥{{net}}</text>
         <text class="s">储蓄罐（主动存钱 + 今日剩余）</text>
       </view>
-      <!-- 金币 -->
       <view wx:for="{{coins}}" wx:key="id" class="coin" style="left: {{item.x}}%;">{{item.label}}</view>
     </view>
 
-    <!-- 主动存钱 + 明细按钮 -->
-    <view class="card" style="margin-top:24rpx;">
-      <view class="row">
-        <text class="k">储蓄明细</text>
-        <text class="det" bindtap="openDetail">明细 ›</text>
+    <!-- 记录卡片 -->
+    <view class="card">
+      <view class="card-det-head">
+        <text class="det-btn" bindtap="openDetail">明细 ›</text>
       </view>
-      <view class="divider"></view>
-      <view class="row" style="margin-top:18rpx;">
+      <view class="row">
         <text class="k">主动存钱</text>
         <text class="v green">+¥{{savedActive}}</text>
       </view>
-    </view>
-
-    <!-- 统计入口 -->
-    <view class="card link" style="margin-top:24rpx;" bindtap="openStats">
-      <view class="row">
-        <text class="k">📊 查看统计</text>
-        <text class="v" style="color:var(--blue);">统计 ›</text>
+      <view class="row" style="margin-top:18rpx;">
+        <text class="k">今日剩余可花</text>
+        <text class="v {{dayDiff<0?'red':''}}">{{dayDiff<0?'-':'+'}}¥{{dayDiff}}</text>
+      </view>
+      <view class="row" style="margin-top:18rpx;">
+        <text class="k">储蓄目标</text>
+        <text class="v">¥{{goal}}</text>
       </view>
     </view>
 
-    <!-- 主动存钱按钮 -->
-    <view class="btn-primary" style="margin-top:40rpx;" bindtap="doSave">+ 主动存钱 ¥50</view>
-    <view class="btn-ghost" style="margin-top:20rpx;" bindtap="doReset">重置主动存钱</view>
+    <!-- 进度 -->
+    <view class="progress"><view class="bar" style="width: {{pct}}%;"></view></view>
+    <view class="prog-tip">已攒 {{net0}} / {{goal}} · {{reached ? '🎉 已达成' : '继续努力'}}</view>
+
+    <!-- 操作 -->
+    <view class="btn-primary" style="margin-top:26rpx;" bindtap="openSave">＋ 主动存钱</view>
+    <view class="btn-ghost danger" style="margin-top:16rpx;" bindtap="doReset">清空储蓄罐</view>
+    <view class="btn-ghost tiny" style="margin-top:16rpx;" bindtap="recomputeAll">⟳ 数据混乱？按记录重算</view>
   </scroll-view>
 
-  <!-- 明细弹框（跟皮肤色） -->
-  <view wx:if="{{showDetail}}" class="sheet-mask" bindtap="closeDetail">
-    <view class="sheet" style="background: {{sheetBg}};" catchtap="noop">
-      <view class="sheet-head">
-        <text class="sheet-title">储蓄明细</text>
-        <text class="sheet-close" bindtap="closeDetail">完成</text>
-      </view>
-      <view class="row" style="margin-top:20rpx;">
-        <text class="k">主动存钱</text><text class="v green">+¥{{savedActive}}</text>
-      </view>
-      <view class="row" style="margin-top:12rpx;">
-        <text class="k">历史结转</text><text class="v">¥{{savedCarry}}</text>
-      </view>
-      <view class="row" style="margin-top:12rpx;">
-        <text class="k">今日剩余</text><text class="v {{dayDiff<0?'red':''}}">{{dayDiff<0?'-':'+'}}¥{{dayDiff}}</text>
-      </view>
-      <view class="divider"></view>
-      <text class="k" style="display:block;margin:12rpx 0;">主动存钱记录</text>
-      <view wx:if="{{logs.length===0}}" class="tip">暂无记录</view>
-      <view wx:for="{{logs}}" wx:key="ts" class="log-row">
-        <text class="green">+¥{{item.amount}}</text>
-        <text class="dt">{{item.date}}</text>
-      </view>
-    </view>
-  </view>
+  <!-- 主动存钱弹框（输入金额） -->
+  <save-sheet show="{{saveShow}}" night="{{nightClass==='night'}}" bind:close="closeSave" bind:saved="onSaveSaved"/>
 
   <expense-sheet id="expSheet" show="{{expShow}}" night="{{nightClass==='night'}}" bind:close="closeExp" bind:saved="onExpSaved"/>
 </view>

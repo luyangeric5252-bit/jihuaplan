@@ -1,11 +1,37 @@
-.det { font-size: 28rpx; color: var(--blue); font-weight: 700; margin-left: auto; }
-.page.night .det { color: #aab4ff; }
-.link:active { opacity: .7; }
+/* 头部（对齐 HTML .head：date + big + 右上角统计） */
+.head { display: flex; align-items: flex-start; justify-content: space-between; }
+.head-l { display: flex; flex-direction: column; gap: 4rpx; }
+.head .date { font-size: 24rpx; color: var(--text-2); font-weight: 700; }
+.head .big { font-size: 42rpx; font-weight: 800; letter-spacing: 1rpx; }
+.head-action {
+  font-size: 24rpx; font-weight: 800; color: #5b6cff;
+  background: rgba(91,108,255,.12); padding: 8rpx 20rpx; border-radius: 22rpx;
+}
+.page.night .head-action { color: #aab4ff; background: rgba(170,180,255,.18); }
 
-.sheet-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12rpx; }
-.sheet-title { font-size: 34rpx; font-weight: 800; }
-.sheet-close { font-size: 28rpx; color: var(--blue); font-weight: 600; }
-.page.night .sheet-close { color: #aab4ff; }
-.log-row { display: flex; justify-content: space-between; padding: 14rpx 0; font-size: 28rpx; border-bottom: 1rpx solid var(--line); }
-.log-row .green { color: var(--green); font-weight: 700; }
-.log-row .dt { color: var(--text-2); font-size: 24rpx; }
+/* 记录卡片（对齐 HTML .card-det-head + rows） */
+.card-det-head { margin-bottom: 10rpx; }
+.det-btn { font-size: 26rpx; font-weight: 800; color: #5b6cff; }
+.page.night .det-btn { color: #aab4ff; }
+
+/* 进度（对齐 HTML .progress） */
+.progress { height: 18rpx; border-radius: 999rpx; background: rgba(255,255,255,.5); overflow: hidden; margin-top: 20rpx; }
+.page.night .progress { background: rgba(255,255,255,.14); }
+.progress .bar { display: block; height: 100%; border-radius: 999rpx; background: linear-gradient(90deg, #5b6cff, #8b97ff); transition: width .5s ease; }
+.prog-tip { font-size: 22rpx; color: var(--text-2); font-weight: 700; text-align: center; margin-top: 14rpx; }
+
+/* 按钮（对齐 HTML .btn / .btn.ghost.danger / .btn.ghost.tiny） */
+.btn-primary {
+  background: linear-gradient(135deg, #5b6cff, #8b97ff); color: #fff; font-weight: 800;
+  border-radius: 28rpx; padding: 30rpx; text-align: center; font-size: 32rpx;
+  box-shadow: 0 8rpx 22rpx rgba(91,108,255,.35);
+}
+.btn-primary:active { opacity: .85; transform: scale(.99); }
+.btn-ghost {
+  background: rgba(0,0,0,.04); color: var(--text-2); font-weight: 700;
+  border-radius: 28rpx; padding: 26rpx; text-align: center; font-size: 30rpx;
+}
+.page.night .btn-ghost { background: rgba(255,255,255,.1); color: #aab4ff; }
+.btn-ghost.danger { color: #ff5b6e; }
+.page.night .btn-ghost.danger { color: #ff8a96; }
+.btn-ghost.tiny { font-size: 24rpx; color: var(--text-2); }
