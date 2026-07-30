@@ -16,6 +16,11 @@
     </view>
   </view>
 
+  <view wx:if="{{showCustom}}" class="custom-wrap">
+    <text class="cu-label">自定义类型</text>
+    <input class="cu-input" value="{{customName}}" bindinput="onCustom" placeholder="如：打车费、理发…" maxlength="10"/>
+  </view>
+
   <view class="field" bindtap="toggleDate">
     <text class="k">日期</text>
     <text class="v">{{date}} ›</text>

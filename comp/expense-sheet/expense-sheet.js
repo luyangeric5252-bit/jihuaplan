@@ -17,7 +17,8 @@ Component({
     cats: CATS,
     catEmoji: CAT_EMOJI,
     amount: '', cat: '餐饮', date: '', note: '',
-    showDate: false, tag: '今天'
+    showDate: false, tag: '今天',
+    customName: '', showCustom: false
   },
   observers: {
     'show': function (v) {
@@ -36,7 +37,7 @@ Component({
       }
       this.setData({
         amount: '', cat: '餐饮', date, note: '', showDate: false, tag,
-        night: isNight
+        customName: '', showCustom: false, night: isNight
       });
     },
     dayStatus(d, ds) {
@@ -50,7 +51,11 @@ Component({
     },
     onAmt(e) { this.setData({ amount: e.detail.value }); },
     onNote(e) { this.setData({ note: e.detail.value }); },
-    pickCat(e) { this.setData({ cat: e.currentTarget.dataset.c }); },
+    pickCat(e) {
+      const c = e.currentTarget.dataset.c;
+      this.setData({ cat: c, showCustom: c === '其他', customName: '' });
+    },
+    onCustom(e) { this.setData({ customName: e.detail.value }); },
     toggleDate() { this.setData({ showDate: !this.data.showDate }); },
     onDate(e) { this.setData({ date: e.detail.value, showDate: false }); },
     onDrag() {},
@@ -61,8 +66,18 @@ Component({
         wx.showToast({ title: '请输入金额', icon: 'none' });
         return;
       }
+      // 选“其他”时必须填写自定义类型
+      let cat = this.data.cat;
+      if (cat === '其他') {
+        const name = (this.data.customName || '').trim();
+        if (!name) {
+          wx.showToast({ title: '请输入类型', icon: 'none' });
+          return;
+        }
+        cat = name;
+      }
       const d = ledger.load();
-      ledger.addExpense(d, amt, this.data.cat, this.data.note, this.data.date);
+      ledger.addExpense(d, amt, cat, this.data.note, this.data.date);
       wx.showToast({ title: '已记录', icon: 'success' });
       this.triggerEvent('close');
       this.triggerEvent('saved');
