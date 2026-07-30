@@ -18,7 +18,7 @@
 
 .scroll {
   height: calc(100vh - env(safe-area-inset-top) - 80rpx);
-  padding: 4rpx 36rpx calc(180rpx + env(safe-area-inset-bottom));
+  padding: 40rpx 36rpx calc(180rpx + env(safe-area-inset-bottom));
   box-sizing: border-box;
 }
 
