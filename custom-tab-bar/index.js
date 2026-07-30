@@ -40,6 +40,8 @@ Component({
         on: this.data.selected === t.key,
         icon: iconSrc(t.key, this.data.selected === t.key ? selColor : norColor)
       }));
+      // ＋ 记账按钮插入中间位置（第 3 位），对齐 HTML 原型
+      tabs.splice(2, 0, { add: true });
       this.setData({ tabs });
     },
     onTap(e) {

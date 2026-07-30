@@ -1,9 +1,11 @@
 <view class="tabbar {{night?'night':''}}">
-  <view wx:for="{{tabs}}" wx:key="key" class="tab {{item.on?'on':''}}" data-go="{{item.key}}" bindtap="onTap">
-    <image class="ic" src="{{item.icon}}" mode="aspectFit"></image>
-    <text>{{item.label}}</text>
-  </view>
-  <view class="tab add" data-go="record" bindtap="onTap">
-    <view class="ic-plus">＋</view>
-  </view>
+  <block wx:for="{{tabs}}" wx:key="key">
+    <view wx:if="{{item.add}}" class="tab add" data-go="record" bindtap="onTap">
+      <view class="ic-plus">＋</view>
+    </view>
+    <view wx:else class="tab {{item.on?'on':''}}" data-go="{{item.key}}" bindtap="onTap">
+      <image class="ic" src="{{item.icon}}" mode="aspectFit"></image>
+      <text>{{item.label}}</text>
+    </view>
+  </block>
 </view>
