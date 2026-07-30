@@ -1,8 +1,3 @@
-/* 记录卡片（对齐 HTML .card-det-head + rows） */
-.card-det-head { margin-bottom: 10rpx; }
-.det-btn { font-size: 26rpx; font-weight: 800; color: #5b6cff; }
-.page.night .det-btn { color: #aab4ff; }
-
 /* 进度（对齐 HTML .progress） */
 .progress { height: 18rpx; border-radius: 999rpx; background: rgba(255,255,255,.5); overflow: hidden; margin-top: 20rpx; }
 .page.night .progress { background: rgba(255,255,255,.14); }

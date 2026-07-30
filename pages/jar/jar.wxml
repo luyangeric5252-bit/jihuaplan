@@ -2,7 +2,6 @@
   <view class="head-bar">
     <text class="h-title">我的储蓄</text>
     <text class="h-sub">计划储蓄罐</text>
-    <text class="h-right" bindtap="openStats">统计 ›</text>
   </view>
 
   <scroll-view scroll-y class="scroll">
@@ -16,11 +15,8 @@
       <view wx:for="{{coins}}" wx:key="id" class="coin" style="left: {{item.x}}%;">{{item.label}}</view>
     </view>
 
-    <!-- 记录卡片 -->
+    <!-- 储蓄概览卡片 + 进度 -->
     <view class="card">
-      <view class="card-det-head">
-        <text class="det-btn" bindtap="openDetail">明细 ›</text>
-      </view>
       <view class="row">
         <text class="k">主动存钱</text>
         <text class="v green">+¥{{savedActive}}</text>
@@ -34,15 +30,14 @@
         <text class="v">¥{{goal}}</text>
       </view>
     </view>
-
-    <!-- 进度 -->
     <view class="progress"><view class="bar" style="width: {{pct}}%;"></view></view>
     <view class="prog-tip">已攒 {{net0}} / {{goal}} · {{reached ? '🎉 已达成' : '继续努力'}}</view>
 
-    <!-- 操作 -->
-    <view class="btn-primary" style="margin-top:26rpx;" bindtap="openSave">＋ 主动存钱</view>
+    <!-- 操作按钮（明细 / 统计 用淡色大按钮，主动存钱主色，清空危险） -->
+    <view class="btn-ghost" style="margin-top:26rpx;" bindtap="openDetail">明细</view>
+    <view class="btn-ghost" style="margin-top:16rpx;" bindtap="openStats">统计</view>
+    <view class="btn-primary" style="margin-top:16rpx;" bindtap="openSave">＋ 主动存钱</view>
     <view class="btn-ghost danger" style="margin-top:16rpx;" bindtap="doReset">清空储蓄罐</view>
-    <view class="btn-ghost tiny" style="margin-top:16rpx;" bindtap="recomputeAll">⟳ 数据混乱？按记录重算</view>
   </scroll-view>
 
   <!-- 主动存钱弹框（输入金额） -->
