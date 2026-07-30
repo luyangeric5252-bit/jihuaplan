@@ -22,7 +22,7 @@ Page({
     weekDiff: 0, weekStr: '0',
     monthDiff: 0, monthStr: '0',
     chips: [],
-    bg: ['#eef1fb', '#e6e9f7'], nightClass: ''
+    bg: '#eef1fb', nightClass: ''
   },
 
   onShow() {
@@ -57,6 +57,8 @@ Page({
     if (typeof this.getTabBar === 'function' && this.getTabBar()) {
       this.getTabBar().setData({ selected: 'today', night });
     }
+    // 状态栏文字颜色随皮肤切换（custom 导航栏时状态栏背景透明，露出页面渐变）
+    wx.setStatusBarStyle({ style: night ? 'light' : 'dark' });
   },
 
   fmt(n) { return Math.round(n); }

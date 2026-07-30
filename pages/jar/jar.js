@@ -4,7 +4,7 @@ const ledger = app.globalData.ledger;
 Page({
   data: {
     net: 0, pct: 0, jarCls: '', savedActive: 0, savedCarry: 0, dayDiff: 0,
-    showDetail: false, logs: [], coins: [], bg: ['#eef1fb', '#e6e9f7'], sheetBg: '#eef1fb', nightClass: ''
+    showDetail: false, logs: [], coins: [], bg: '#eef1fb', sheetBg: '#eef1fb', nightClass: ''
   },
 
   onShow() {
@@ -29,6 +29,7 @@ Page({
     if (typeof this.getTabBar === 'function' && this.getTabBar()) {
       this.getTabBar().setData({ selected: 'jar', night: isNight });
     }
+    wx.setStatusBarStyle({ style: isNight ? 'light' : 'dark' });
   },
 
   // 主动存钱 + 金币（对应原型 doSave + coinRain）

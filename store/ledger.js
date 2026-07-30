@@ -132,20 +132,50 @@ function addExpense(d, amount, cat, note, date) {
   settleIfNewDay(d);
 }
 
-// ---- 皮肤（对应原型 applySkin / sheetMap） ----
-const SKIN_GRAD = {
-  aurora: ['#eef1fb', '#e6e9f7'],
-  sunset: ['#fff3e6', '#ffe9d6'],
-  mint:   ['#eafff4', '#dcfcec'],
-  sakura: ['#fff0f6', '#ffe6f0'],
-  night:  ['#1c1c2e', '#1c1c2e'],
-  gold:   ['#fff8e6', '#fff0c8']
+// ---- 皮肤（对应原型 #app 多层径向光晕渐变） ----
+// 每个皮肤返回完整 CSS background 字符串（4 角光晕 + 线性底），对齐 HTML 原型
+const SKIN_BG_CSS = {
+  aurora: 'radial-gradient(120% 90% at 12% 8%, #ffd6e7 0%, transparent 42%),'
+        + 'radial-gradient(110% 80% at 88% 14%, #cfe0ff 0%, transparent 45%),'
+        + 'radial-gradient(130% 100% at 75% 85%, #d6ffe9 0%, transparent 48%),'
+        + 'radial-gradient(120% 90% at 20% 90%, #fff0c8 0%, transparent 46%),'
+        + 'linear-gradient(160deg,#eef1fb,#e6e9f7)',
+  sunset: 'radial-gradient(120% 90% at 12% 8%, #ffd9b8 0%, transparent 42%),'
+        + 'radial-gradient(110% 80% at 88% 14%, #ffc7c0 0%, transparent 45%),'
+        + 'radial-gradient(130% 100% at 75% 85%, #ffe3b0 0%, transparent 48%),'
+        + 'radial-gradient(120% 90% at 20% 90%, #fff0c8 0%, transparent 46%),'
+        + 'linear-gradient(160deg,#fff3e6,#ffe9d6)',
+  mint:   'radial-gradient(120% 90% at 12% 8%, #c5ffe6 0%, transparent 42%),'
+        + 'radial-gradient(110% 80% at 88% 14%, #d6f5ff 0%, transparent 45%),'
+        + 'radial-gradient(130% 100% at 75% 85%, #c8ffd9 0%, transparent 48%),'
+        + 'radial-gradient(120% 90% at 20% 90%, #e8fff0 0%, transparent 46%),'
+        + 'linear-gradient(160deg,#eafff4,#dcfcec)',
+  sakura: 'radial-gradient(120% 90% at 12% 8%, #ffd0e2 0%, transparent 42%),'
+        + 'radial-gradient(110% 80% at 88% 14%, #ffe0ec 0%, transparent 45%),'
+        + 'radial-gradient(130% 100% at 75% 85%, #ffd6e8 0%, transparent 48%),'
+        + 'radial-gradient(120% 90% at 20% 90%, #fff0f6 0%, transparent 46%),'
+        + 'linear-gradient(160deg,#fff0f6,#ffe6f0)',
+  night:  'radial-gradient(120% 90% at 12% 8%, #3a3a66 0%, transparent 46%),'
+        + 'radial-gradient(110% 80% at 88% 14%, #2a2a4e 0%, transparent 48%),'
+        + 'radial-gradient(130% 100% at 75% 85%, #1f1f38 0%, transparent 50%),'
+        + 'radial-gradient(120% 90% at 20% 90%, #2e2e52 0%, transparent 46%),'
+        + 'linear-gradient(160deg,#1c1c2e,#16162a)',
+  gold:   'radial-gradient(120% 90% at 12% 8%, #ffe9b0 0%, transparent 42%),'
+        + 'radial-gradient(110% 80% at 88% 14%, #fff0c8 0%, transparent 45%),'
+        + 'radial-gradient(130% 100% at 75% 85%, #ffe6a8 0%, transparent 48%),'
+        + 'radial-gradient(120% 90% at 20% 90%, #fff8e6 0%, transparent 46%),'
+        + 'linear-gradient(160deg,#fff8e6,#fff0c8)'
+};
+const SKIN_BASE = {
+  aurora: '#eef1fb', sunset: '#fff3e6', mint: '#eafff4',
+  sakura: '#fff0f6', night: '#1c1c2e', gold: '#fff8e6'
 };
 const SHEET_BG = {
   aurora: '#eef1fb', sunset: '#fff3e6', mint: '#eafff4',
   sakura: '#fff0f6', night: 'rgba(28,28,46,.96)', gold: '#fff8e6'
 };
-function skinBackground(id) { return SKIN_GRAD[id] || SKIN_GRAD.aurora; }
+function skinBackground(id) { return SKIN_BG_CSS[id] || SKIN_BG_CSS.aurora; }
+function skinBaseColor(id) { return SKIN_BASE[id] || SKIN_BASE.aurora; }
 function sheetBackground(id) { return SHEET_BG[id] || SHEET_BG.aurora; }
 function isNight(id) { return id === 'night'; }
 function pickSkin(d, id) {
@@ -176,6 +206,6 @@ module.exports = {
   dayDiff, weekDiff, monthDiff,
   recomputeCarry, settleIfNewDay, settleDay,
   net, doSave, doResetActive, addExpense,
-  skinBackground, sheetBackground, isNight, pickSkin,
+  skinBackground, skinBaseColor, sheetBackground, isNight, pickSkin,
   syncLayer
 };

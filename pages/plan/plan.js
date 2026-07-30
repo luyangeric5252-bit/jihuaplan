@@ -4,7 +4,7 @@ const ledger = app.globalData.ledger;
 Page({
   data: {
     workday: '80', restday: '120', goal: '3000', goalDate: '2026-12-31',
-    bg: ['#eef1fb', '#e6e9f7'], nightClass: '',
+    bg: '#eef1fb', nightClass: '',
     weekHead: ['一', '二', '三', '四', '五', '六', '日'],
     cells: []
   },
@@ -24,6 +24,7 @@ Page({
     if (typeof this.getTabBar === 'function' && this.getTabBar()) {
       this.getTabBar().setData({ selected: 'plan', night });
     }
+    wx.setStatusBarStyle({ style: night ? 'light' : 'dark' });
   },
 
   onWork(e) { this.savePlan('workday', e.detail.value); },

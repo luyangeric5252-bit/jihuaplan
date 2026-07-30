@@ -1,10 +1,10 @@
-<view class="page {{nightClass}}" style="background: linear-gradient(160deg, {{bg[0]}}, {{bg[1]}});">
+<view class="page {{nightClass}}" style="background: {{bg}};">
   <!-- 自定义导航栏：左侧标题，右侧避让胶囊 -->
   <view class="custom-nav">
     <view class="nav-body">
       <view class="head">
-        <text class="date">{{dateStr}} 周{{weekday}}</text>
         <text class="big">今天的花销</text>
+        <text class="date">{{dateStr}} 周{{weekday}}</text>
       </view>
       <view class="nav-spacer"></view>
     </view>

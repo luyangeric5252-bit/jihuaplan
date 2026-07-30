@@ -5,7 +5,7 @@ Page({
   data: {
     amount: '', cat: '餐饮', date: '', note: '',
     cats: ['餐饮', '交通', '购物', '居家', '其他'],
-    showDate: false, bg: ['#eef1fb', '#e6e9f7'], nightClass: ''
+    showDate: false, bg: '#eef1fb', nightClass: ''
   },
 
   onLoad() {
@@ -27,6 +27,7 @@ Page({
     if (typeof this.getTabBar === 'function' && this.getTabBar()) {
       this.getTabBar().setData({ selected: 'record', night });
     }
+    wx.setStatusBarStyle({ style: night ? 'light' : 'dark' });
   },
 
   onAmt(e) { this.setData({ amount: e.detail.value }); },

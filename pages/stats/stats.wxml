@@ -1,4 +1,4 @@
-<view class="page {{nightClass}}" style="background: linear-gradient(160deg, {{bg[0]}}, {{bg[1]}});">
+<view class="page {{nightClass}}" style="background: {{bg}};">
   <view class="head">
     <text class="nav-back" bindtap="goBack">‹ 返回</text>
     <text class="title">统计</text>

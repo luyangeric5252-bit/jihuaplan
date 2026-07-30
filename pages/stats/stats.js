@@ -9,7 +9,7 @@ const CAT_COLORS = {
 Page({
   data: {
     legend: [], last7: [], total: 0, list: [], expanded: false,
-    bg: ['#eef1fb', '#e6e9f7'], nightClass: ''
+    bg: '#eef1fb', nightClass: ''
   },
 
   onShow() { this.refresh(); },

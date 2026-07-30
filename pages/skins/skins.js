@@ -4,7 +4,7 @@ const ledger = app.globalData.ledger;
 Page({
   data: {
     selected: 'aurora',
-    bg: ['#eef1fb', '#e6e9f7'], nightClass: '',
+    bg: '#eef1fb', nightClass: '',
     skins: [
       { id: 'aurora', name: '极光蓝', g: ['#eef1fb', '#e6e9f7'] },
       { id: 'sunset', name: '日落橙', g: ['#fff3e6', '#ffe9d6'] },
@@ -26,21 +26,20 @@ Page({
     if (typeof this.getTabBar === 'function' && this.getTabBar()) {
       this.getTabBar().setData({ selected: 'skins', night });
     }
+    wx.setStatusBarStyle({ style: night ? 'light' : 'dark' });
   },
 
   pick(e) {
     const id = e.currentTarget.dataset.id;
     const d = ledger.load();
     ledger.pickSkin(d, id);
-    // 切换导航栏颜色（对应原型 applySkin）
+    // 切换状态栏文字颜色（custom 导航栏下状态栏背景透明，露出页面渐变）
     const isNight = ledger.isNight(id);
-    wx.setNavigationBarColor({
-      frontColor: isNight ? '#ffffff' : '#000000',
-      backgroundColor: ledger.skinBackground(id)[0]
-    });
+    wx.setStatusBarStyle({ style: isNight ? 'light' : 'dark' });
     this.setData({
       selected: id,
-      bg: ledger.skinBackground(id)
+      bg: ledger.skinBackground(id),
+      nightClass: isNight ? 'night' : ''
     });
     wx.showToast({ title: '已切换', icon: 'none' });
   }
