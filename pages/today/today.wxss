@@ -1,14 +1,26 @@
-.page { min-height: 100vh; padding-top: env(safe-area-inset-top); box-sizing: border-box; }
+.page { height: 100vh; overflow: hidden; box-sizing: border-box; padding-top: 0; }
 
-/* 头部：日期 + 大标题（对应 HTML .head） */
-.head {
-  padding: calc(env(safe-area-inset-top) + 16rpx) 36rpx 8rpx;
-  display: flex; flex-direction: column; gap: 6rpx;
+/* 自定义导航栏（标题与胶囊同高） */
+.custom-nav {
+  padding-top: env(safe-area-inset-top);
 }
+.nav-body {
+  height: 88rpx;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 36rpx;
+}
+.nav-spacer { width: 180rpx; flex-shrink: 0; }
+
+/* 头部：日期 + 大标题 */
+.head { display: flex; flex-direction: column; gap: 4rpx; }
 .head .date { font-size: 24rpx; color: var(--text-2); font-weight: 700; }
 .head .big { font-size: 42rpx; font-weight: 800; letter-spacing: 1rpx; }
 
-.scroll { padding: 12rpx 36rpx calc(190rpx + env(safe-area-inset-bottom)); box-sizing: border-box; }
+.scroll {
+  height: calc(100vh - env(safe-area-inset-top) - 88rpx);
+  padding: 8rpx 36rpx calc(180rpx + env(safe-area-inset-bottom));
+  box-sizing: border-box;
+}
 
 /* 进度条（对应 HTML .progress） */
 .progress {
@@ -35,4 +47,3 @@
 .chip .e { font-size: 30rpx; }
 
 .empty { font-size: 26rpx; color: var(--text-2); font-weight: 600; padding: 8rpx 0; }
-

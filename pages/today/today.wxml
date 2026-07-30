@@ -1,8 +1,13 @@
 <view class="page {{nightClass}}" style="background: linear-gradient(160deg, {{bg[0]}}, {{bg[1]}});">
-  <!-- 头部：日期 + 大标题 -->
-  <view class="head">
-    <text class="date">{{dateStr}} 周{{weekday}}</text>
-    <text class="big">今天的花销</text>
+  <!-- 自定义导航栏：左侧标题，右侧避让胶囊 -->
+  <view class="custom-nav">
+    <view class="nav-body">
+      <view class="head">
+        <text class="date">{{dateStr}} 周{{weekday}}</text>
+        <text class="big">今天的花销</text>
+      </view>
+      <view class="nav-spacer"></view>
+    </view>
   </view>
 
   <scroll-view scroll-y class="scroll">
@@ -40,7 +45,7 @@
       <view class="divider"></view>
       <view class="row" style="margin-top:18rpx;">
         <text class="k">本月</text>
-        <text class="v {{monthDiff<0?'red':''}}">{{monthDiff<0?'-':'+¥'}}{{monthStr}}</text>
+        <text class="v {{monthDiff<0?'red':''}}">{{weekDiff<0?'-':'+¥'}}{{monthStr}}</text>
       </view>
       <view class="sub">预算剩余（月预算−本月已花）</view>
     </view>
