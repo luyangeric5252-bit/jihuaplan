@@ -1,6 +1,18 @@
 .title-sm { font-size: 30rpx; font-weight: 700; margin-bottom: 18rpx; display: block; }
 .exp-empty { font-size: 26rpx; color: var(--text-2); font-weight: 600; padding: 8rpx 0; }
 
+/* 内页 head：返回按钮左上角，与胶囊同一行 */
+.head.inner {
+  flex-direction: row;
+  align-items: center;
+  height: 88rpx;
+  padding: calc(env(safe-area-inset-top) + 8rpx) 36rpx 0;
+  gap: 16rpx;
+}
+.head.inner .big { font-size: 36rpx; font-weight: 800; letter-spacing: 1rpx; }
+.nav-back { font-size: 36rpx; font-weight: 700; color: var(--blue); }
+.page.night .nav-back { color: #aab4ff; }
+
 .exp-row { display: flex; justify-content: space-between; align-items: center; padding: 18rpx 0; font-size: 28rpx; border-bottom: 1rpx solid var(--line); }
 .exp-row:last-child { border-bottom: none; }
 .exp-row .green { color: var(--green); font-weight: 800; }

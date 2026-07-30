@@ -1,5 +1,5 @@
 <view class="page {{nightClass}}" style="background: {{bg}};">
-  <view class="head">
+  <view class="head inner">
     <text class="nav-back" bindtap="goBack">‹ 返回</text>
     <text class="big">储蓄明细</text>
   </view>

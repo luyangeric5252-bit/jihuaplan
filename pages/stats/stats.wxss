@@ -1,4 +1,16 @@
 .title-sm { font-size: 30rpx; font-weight: 700; display: block; margin-bottom: 18rpx; }
+
+/* 内页 head：返回按钮左上角，与胶囊同一行 */
+.head.inner {
+  flex-direction: row;
+  align-items: center;
+  height: 88rpx;
+  padding: calc(env(safe-area-inset-top) + 8rpx) 36rpx 0;
+  gap: 16rpx;
+}
+.head.inner .title { font-size: 36rpx; font-weight: 800; letter-spacing: .5rpx; }
+.nav-back { font-size: 36rpx; font-weight: 700; color: var(--blue); }
+.page.night .nav-back { color: #aab4ff; }
 .lg-row { display: flex; align-items: center; padding: 12rpx 0; }
 .dot { width: 24rpx; height: 24rpx; border-radius: 50%; margin-right: 16rpx; }
 .lg-k { font-size: 28rpx; }
