@@ -58,15 +58,6 @@ Page({
     });
   },
 
-  // 数据混乱？按记录重算（对应原型 recomputeAll）
-  recomputeAll() {
-    wx.showModal({
-      title: '按记录重算', content: '将根据所有记账记录重新计算固化结余', success: (r) => {
-        if (r.confirm) { const d = ledger.load(); ledger.recomputeCarry(d); this.onShow(); wx.showToast({ title: '已重算', icon: 'none' }); }
-      }
-    });
-  },
-
   dropCoins() {
     const coins = [];
     for (let i = 0; i < 10; i++) {
