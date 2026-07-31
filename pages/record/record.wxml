@@ -7,7 +7,7 @@
   <scroll-view scroll-y class="scroll">
     <view class="amount">
       <text class="cur">¥</text>
-      <input class="amt" type="digit" value="{{amount}}" bindinput="onAmt" placeholder="0" focus="{{true}}"/>
+      <input class="amt" type="digit" value="{{amount}}" bindinput="onAmt" placeholder="" focus="{{true}}"/>
     </view>
 
     <view class="card">

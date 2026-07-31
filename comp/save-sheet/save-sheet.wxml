@@ -5,7 +5,7 @@
   </view>
   <view class="amount">
     <text class="cur">¥</text>
-    <input class="amt" type="digit" value="{{amount}}" bindinput="onAmt" placeholder="0" focus="{{show}}"/>
+    <input class="amt" type="digit" value="{{amount}}" bindinput="onAmt" placeholder="" focus="{{show}}"/>
   </view>
   <view class="btn-primary" style="margin-top:32rpx;" bindtap="save">存入</view>
   <view class="btn-ghost" style="margin-top:16rpx;" bindtap="onClose">取消</view>

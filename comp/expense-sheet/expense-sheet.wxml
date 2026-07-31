@@ -6,7 +6,7 @@
 
   <view class="amount">
     <text class="cur">¥</text>
-    <input class="amt" type="digit" value="{{amount}}" bindinput="onAmt" placeholder="0" focus="{{show}}"/>
+    <input class="amt" type="digit" value="{{amount}}" bindinput="onAmt" placeholder="" focus="{{show}}"/>
   </view>
 
   <view class="cat-grid">
