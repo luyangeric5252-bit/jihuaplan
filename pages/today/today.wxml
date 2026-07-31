@@ -1,3 +1,4 @@
+<page-meta background-color="{{bgColor}}"></page-meta>
 <view class="page {{nightClass}}" style="background: {{bg}};">
   <!-- 头部导航条：标题左上、副标题(当天日期)居中、与胶囊同行 -->
   <view class="head-bar">

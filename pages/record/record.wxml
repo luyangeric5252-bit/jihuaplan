@@ -1,3 +1,4 @@
+<page-meta background-color="{{bgColor}}"></page-meta>
 <view class="page {{nightClass}}" style="background: {{bg}};">
   <view class="head">
     <text class="title">记一笔</text>

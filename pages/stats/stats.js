@@ -9,7 +9,7 @@ const CAT_COLORS = {
 Page({
   data: {
     legend: [], last7: [], total: 0, list: [], expanded: false,
-    bg: '#eef1fb', nightClass: ''
+    bg: '#eef1fb', bgColor: '#eef1fb', nightClass: ''
   },
 
   onShow() { this.refresh(); },
@@ -46,6 +46,7 @@ Page({
     this.setData({
       legend, last7, total, list,
       bg: ledger.skinBackground(d.skins.selected),
+      bgColor: ledger.skinBaseColor(d.skins.selected),
       nightClass: ledger.isNight(d.skins.selected) ? 'night' : ''
     });
   },

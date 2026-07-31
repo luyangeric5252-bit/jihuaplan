@@ -4,7 +4,7 @@ const ledger = app.globalData.ledger;
 Page({
   data: {
     selected: 'aurora',
-    bg: '#eef1fb', nightClass: '',
+    bg: '#eef1fb', bgColor: '#eef1fb', nightClass: '',
     expShow: false,
     skins: [
       { id: 'aurora', name: '极光蓝', g: ['#eef1fb', '#e6e9f7'], bg: ledger.skinBackground('aurora') },
@@ -22,6 +22,7 @@ Page({
     this.setData({
       selected: d.skins.selected,
       bg: ledger.skinBackground(d.skins.selected),
+      bgColor: ledger.skinBaseColor(d.skins.selected),
       nightClass: night ? 'night' : ''
     });
     if (typeof this.getTabBar === 'function' && this.getTabBar()) {

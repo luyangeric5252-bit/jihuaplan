@@ -5,7 +5,7 @@ Page({
   data: {
     amount: '', cat: '餐饮', date: '', note: '',
     cats: ['餐饮', '交通', '购物', '居家', '其他'],
-    showDate: false, bg: '#eef1fb', nightClass: ''
+    showDate: false, bg: '#eef1fb', bgColor: '#eef1fb', nightClass: ''
   },
 
   onLoad() {
@@ -13,6 +13,7 @@ Page({
     this.setData({
       date: ledger.todayKey(),
       bg: ledger.skinBackground(d.skins.selected),
+      bgColor: ledger.skinBaseColor(d.skins.selected),
       nightClass: ledger.isNight(d.skins.selected) ? 'night' : ''
     });
   },
@@ -22,6 +23,7 @@ Page({
     const night = ledger.isNight(d.skins.selected);
     this.setData({
       bg: ledger.skinBackground(d.skins.selected),
+      bgColor: ledger.skinBaseColor(d.skins.selected),
       nightClass: night ? 'night' : ''
     });
     if (typeof this.getTabBar === 'function' && this.getTabBar()) {

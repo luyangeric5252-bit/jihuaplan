@@ -22,7 +22,7 @@ Page({
     weekDiff: 0, weekStr: '0',
     monthDiff: 0, monthStr: '0',
     chips: [],
-    bg: '#eef1fb', nightClass: '',
+    bg: '#eef1fb', bgColor: '#eef1fb', nightClass: '',
     expShow: false
   },
 
@@ -53,6 +53,7 @@ Page({
       monthDiff: month, monthStr: this.fmt(month),
       chips,
       bg: ledger.skinBackground(d.skins.selected),
+      bgColor: ledger.skinBaseColor(d.skins.selected),
       nightClass: night ? 'night' : ''
     });
     if (typeof this.getTabBar === 'function' && this.getTabBar()) {

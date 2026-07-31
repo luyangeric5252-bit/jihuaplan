@@ -1,3 +1,4 @@
+<page-meta background-color="{{bgColor}}"></page-meta>
 <view class="page {{nightClass}}" style="background: {{bg}};">
   <view class="head-bar">
     <text class="h-title">计划经济</text>

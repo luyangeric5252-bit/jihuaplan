@@ -26,6 +26,7 @@ Page({
       dayDiff: Math.round(ledger.dayDiff(d) * 10) / 10,
       goal: Math.round(goal), reached: net >= goal,
       bg: ledger.skinBackground(d.skins.selected),
+      bgColor: ledger.skinBaseColor(d.skins.selected),
       nightClass: isNight ? 'night' : ''
     });
     if (typeof this.getTabBar === 'function' && this.getTabBar()) {

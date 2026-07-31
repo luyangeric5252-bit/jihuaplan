@@ -5,7 +5,7 @@ function fmt(n) { return Math.round(n * 10) / 10; }
 
 Page({
   data: {
-    bg: '#eef1fb', nightClass: '',
+    bg: '#eef1fb', bgColor: '#eef1fb', nightClass: '',
     activeLogs: [], carryRows: []
   },
 
@@ -40,6 +40,7 @@ Page({
 
     this.setData({
       bg: ledger.skinBackground(d.skins.selected),
+      bgColor: ledger.skinBaseColor(d.skins.selected),
       nightClass: isNight ? 'night' : '',
       activeLogs, carryRows
     });

@@ -16,7 +16,7 @@ function dayStatus(d, ds, tk) {
 
 Page({
   data: {
-    bg: '#eef1fb', nightClass: '',
+    bg: '#eef1fb', bgColor: '#eef1fb', nightClass: '',
     todayType: '工作日',
     dayBudget: '0', weekBudget: '0', monthBudget: '0',
     ws: '0', ms: '0', weekDiff: '0', monthDiff: '0',
@@ -39,6 +39,7 @@ Page({
 
     this.setData({
       bg: ledger.skinBackground(d.skins.selected),
+      bgColor: ledger.skinBaseColor(d.skins.selected),
       nightClass: ledger.isNight(d.skins.selected) ? 'night' : '',
       todayType: isWork ? '工作日' : '非工作日',
       dayBudget: String(ledger.dayBudget(d)),
