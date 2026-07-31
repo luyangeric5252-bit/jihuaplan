@@ -1,18 +1,18 @@
-/* 悬浮圆角 tabBar（对应 HTML 原型 .tabbar） */
+/* 悬浮圆角 tabBar（更通透，减少与背景的分层感） */
 .tabbar {
   position: fixed; left: 22rpx; right: 22rpx;
   bottom: calc(env(safe-area-inset-bottom) + 16rpx);
   height: 140rpx;
-  background: rgba(255,255,255,.42);
-  border: 1rpx solid rgba(255,255,255,.7);
+  background: rgba(255,255,255,.28);
+  border: 1rpx solid rgba(255,255,255,.45);
   border-radius: 52rpx;
   display: flex; align-items: center; justify-content: space-around;
-  box-shadow: 0 28rpx 72rpx rgba(40,44,90,.18);
-  backdrop-filter: blur(20rpx);
-  -webkit-backdrop-filter: blur(20rpx);
+  box-shadow: 0 24rpx 60rpx rgba(40,44,90,.12);
+  backdrop-filter: blur(24rpx);
+  -webkit-backdrop-filter: blur(24rpx);
   padding: 0 12rpx; z-index: 50;
 }
-.tabbar.night { background: rgba(20,20,35,.5); border-color: rgba(255,255,255,.16); }
+.tabbar.night { background: rgba(20,20,35,.38); border-color: rgba(255,255,255,.12); box-shadow: 0 24rpx 60rpx rgba(0,0,0,.35); }
 
 .tab {
   display: flex; flex-direction: column; align-items: center; gap: 6rpx;

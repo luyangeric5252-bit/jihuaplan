@@ -1,36 +1,36 @@
+/* 通用居中弹窗（页面中间弹出 + 缩放淡入动画） */
 .sheet-mask {
-  position: fixed; inset: 0; background: rgba(20,20,40,.4);
-  z-index: 200; display: flex; align-items: flex-end;
-  opacity: 0; visibility: hidden; transition: opacity .28s ease, visibility .28s ease;
+  position: fixed; inset: 0;
+  background: rgba(20,20,40,.45);
+  z-index: 200;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; visibility: hidden;
+  transition: opacity .25s ease, visibility .25s ease;
 }
 .sheet-mask.show { opacity: 1; visibility: visible; }
 
 .sheet {
-  width: 100%; border-radius: 36rpx 36rpx 0 0; padding: 16rpx 32rpx calc(40rpx + env(safe-area-inset-bottom));
+  width: 84%; max-width: 640rpx;
+  border-radius: 44rpx;
+  padding: 40rpx 32rpx;
   background: var(--card-bg, #fff);
-  transform: translateY(100%); transition: transform .32s cubic-bezier(.22,1,.36,1);
-  box-shadow: 0 -8rpx 40rpx rgba(0,0,0,.22);
+  box-shadow: 0 24rpx 80rpx rgba(0,0,0,.2);
+  transform: scale(.86) translateY(20rpx);
+  opacity: 0;
+  transition: transform .28s cubic-bezier(.22,1,.36,1), opacity .28s ease;
 }
-.sheet-mask.show .sheet { transform: translateY(0); }
+.sheet-mask.show .sheet {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+}
+
+/* 暗夜紫：深色玻璃 + 亮字 */
 .sheet.night {
   background: rgba(28,28,46,.96);
   color: #eef0ff;
-  border-top: 1rpx solid rgba(255,255,255,.16);
-  /* 重定义变量，让弹框内部所有 var(--text)/var(--text-2) 兜底统一变亮（暗夜紫适配） */
-  --text: #eef0ff;
-  --text-2: #a9acc8;
-  --card-bg: rgba(255,255,255,.08);
-  --line: rgba(255,255,255,.12);
-  --blue: #aab4ff;
+  border: 1rpx solid rgba(255,255,255,.16);
 }
 
-/* 顶部小横线 */
+/* 顶部小横线（居中弹框里作为装饰） */
 .grip { width: 76rpx; height: 10rpx; border-radius: 6rpx; background: rgba(120,120,150,.4); margin: 0 auto 20rpx; }
 .sheet.night .grip { background: rgba(255,255,255,.35); }
-
-/* 暗夜紫下：品牌色标签 / 输入框文字 / 标题统一亮色 */
-.sheet.night .pill.brand { background: rgba(170,180,255,.18); color: #aab4ff; }
-.sheet.night .ttl { color: #eef0ff; }
-.sheet.night .inp, .sheet.night .amt, .sheet.night .note, .sheet.night .cu-input { color: #eef0ff; }
-.sheet.night .field .v { color: #eef0ff; }
-.sheet.night .picker-box { color: #aab4ff; }

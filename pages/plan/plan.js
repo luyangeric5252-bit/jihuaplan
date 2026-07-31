@@ -1,6 +1,6 @@
 const app = getApp();
 const ledger = app.globalData.ledger;
-const { isRestDay } = require('../utils/holidays.js');
+const { isRestDay } = require('/utils/holidays.js');
 
 function fmt(n) { return Math.round(n); }
 
