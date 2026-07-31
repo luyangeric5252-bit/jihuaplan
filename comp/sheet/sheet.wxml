@@ -1,5 +1,5 @@
-<view class="sheet-mask {{show?'show':''}}" bindtap="onMaskTap">
-  <view class="sheet {{show?'show':''}} {{night?'night':''}}" catchtap="noop">
+<view wx:if="{{show}}" class="sheet-mask" bindtap="onMaskTap">
+  <view class="sheet {{night?'night':''}}" catchtap="noop">
     <view class="grip"></view>
     <slot></slot>
   </view>
