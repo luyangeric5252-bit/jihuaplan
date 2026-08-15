@@ -1,38 +1,84 @@
 <svg width="1024" height="1024" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#5b6cff"/>
-      <stop offset="1" stop-color="#7a5bff"/>
+      <stop offset="0" stop-color="#3f4fd6"/>
+      <stop offset="1" stop-color="#6a4fd0"/>
     </linearGradient>
-    <linearGradient id="coin" x1="0" y1="0" x2="0" y2="1">
+    <radialGradient id="glowA" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#7d8bff" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#7d8bff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowB" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#a26bff" stop-opacity="0.50"/>
+      <stop offset="1" stop-color="#a26bff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowC" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#2f3aa8" stop-opacity="0.6"/>
+      <stop offset="1" stop-color="#2f3aa8" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="jar" x1="0" y1="0" x2="0.25" y2="1">
       <stop offset="0" stop-color="#ffffff"/>
-      <stop offset="1" stop-color="#e6e9ff"/>
+      <stop offset="0.55" stop-color="#e3e9ff"/>
+      <stop offset="1" stop-color="#b9c5ff"/>
     </linearGradient>
-    <linearGradient id="arrow" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#54e6ad"/>
-      <stop offset="1" stop-color="#0f8f63"/>
+    <linearGradient id="lid" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#cdd7ff"/>
     </linearGradient>
+    <radialGradient id="badge" cx="0.35" cy="0.3" r="0.85">
+      <stop offset="0" stop-color="#7d8bff"/>
+      <stop offset="1" stop-color="#3a48c8"/>
+    </radialGradient>
+    <radialGradient id="coin" cx="0.35" cy="0.3" r="0.85">
+      <stop offset="0" stop-color="#fff3c0"/>
+      <stop offset="0.6" stop-color="#ffce5a"/>
+      <stop offset="1" stop-color="#e89a08"/>
+    </radialGradient>
+    <filter id="soft" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="14"/>
+    </filter>
   </defs>
 
   <!-- 圆角方形渐变背景 -->
   <rect x="0" y="0" width="1024" height="1024" rx="224" fill="url(#bg)"/>
 
-  <!-- 顶部高光（立体感） -->
-  <rect x="0" y="0" width="1024" height="512" rx="224" fill="#ffffff" opacity="0.12"/>
-  <!-- 内描边高光环 -->
-  <rect x="14" y="14" width="996" height="996" rx="210" fill="none" stroke="#ffffff" stroke-opacity="0.30" stroke-width="14"/>
+  <!-- 背景多层光晕（生动感） -->
+  <ellipse cx="210" cy="190" rx="300" ry="300" fill="url(#glowA)"/>
+  <ellipse cx="860" cy="300" rx="320" ry="320" fill="url(#glowB)"/>
+  <ellipse cx="512" cy="980" rx="380" ry="320" fill="url(#glowC)"/>
+  <rect x="14" y="14" width="996" height="996" rx="210" fill="none" stroke="#ffffff" stroke-opacity="0.22" stroke-width="12"/>
 
-  <!-- 中心硬币徽章 -->
-  <circle cx="512" cy="470" r="290" fill="url(#coin)"/>
-  <circle cx="512" cy="470" r="290" fill="none" stroke="#ffffff" stroke-opacity="0.55" stroke-width="10"/>
+  <!-- 罐体投影 -->
+  <ellipse cx="512" cy="868" rx="250" ry="46" fill="#000000" opacity="0.35" filter="url(#soft)"/>
 
-  <!-- ¥ 符号 -->
-  <text x="512" y="600" font-family="PingFang SC, Microsoft YaHei, Helvetica, Arial, sans-serif"
-        font-size="380" font-weight="800" fill="#4a52d8" text-anchor="middle">¥</text>
+  <!-- 罐脚 -->
+  <ellipse cx="392" cy="838" rx="58" ry="30" fill="#aab6ff"/>
+  <ellipse cx="632" cy="838" rx="58" ry="30" fill="#aab6ff"/>
 
-  <!-- 绿色向上增长箭头（结余为正 / 节流积累） -->
-  <path d="M512 720 L588 800 L548 800 L548 884 L476 884 L476 800 L436 800 Z"
-        fill="url(#arrow)"/>
-  <path d="M512 720 L588 800 L548 800 L548 884 L476 884 L476 800 L436 800 Z"
-        fill="#ffffff" opacity="0.10"/>
+  <!-- 罐身 -->
+  <ellipse cx="512" cy="582" rx="258" ry="252" fill="url(#jar)"/>
+  <!-- 罐身高光 -->
+  <ellipse cx="420" cy="470" rx="86" ry="150" fill="#ffffff" opacity="0.55" transform="rotate(-18 420 470)"/>
+  <!-- 罐身底部阴影 -->
+  <ellipse cx="512" cy="800" rx="200" ry="60" fill="#9aa8ff" opacity="0.35"/>
+
+  <!-- 罐盖 -->
+  <ellipse cx="512" cy="352" rx="196" ry="66" fill="url(#lid)"/>
+  <ellipse cx="470" cy="338" rx="70" ry="22" fill="#ffffff" opacity="0.6"/>
+  <!-- 投币口 -->
+  <rect x="432" y="338" width="160" height="30" rx="15" fill="#2a2a4e"/>
+
+  <!-- 罐身 ¥ 徽章 -->
+  <circle cx="512" cy="600" r="104" fill="url(#badge)"/>
+  <circle cx="512" cy="600" r="104" fill="none" stroke="#ffffff" stroke-opacity="0.7" stroke-width="8"/>
+  <text x="512" y="668" font-family="PingFang SC, Microsoft YaHei, Helvetica, Arial, sans-serif"
+        font-size="150" font-weight="800" fill="#ffffff" text-anchor="middle">¥</text>
+
+  <!-- 投入的金币（生动：正在落入/积累） -->
+  <circle cx="512" cy="232" r="82" fill="url(#coin)"/>
+  <circle cx="512" cy="232" r="82" fill="none" stroke="#ffffff" stroke-opacity="0.6" stroke-width="7"/>
+  <text x="512" y="288" font-family="PingFang SC, Microsoft YaHei, Helvetica, Arial, sans-serif"
+        font-size="118" font-weight="800" fill="#9a6a00" text-anchor="middle">¥</text>
+  <!-- 金币高光 -->
+  <ellipse cx="486" cy="200" rx="30" ry="20" fill="#ffffff" opacity="0.7" transform="rotate(-20 486 200)"/>
 </svg>
