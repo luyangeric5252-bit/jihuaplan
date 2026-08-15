@@ -1,0 +1,38 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#5b6cff"/>
+      <stop offset="1" stop-color="#7a5bff"/>
+    </linearGradient>
+    <linearGradient id="coin" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#e6e9ff"/>
+    </linearGradient>
+    <linearGradient id="arrow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#54e6ad"/>
+      <stop offset="1" stop-color="#0f8f63"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 圆角方形渐变背景 -->
+  <rect x="0" y="0" width="1024" height="1024" rx="224" fill="url(#bg)"/>
+
+  <!-- 顶部高光（立体感） -->
+  <rect x="0" y="0" width="1024" height="512" rx="224" fill="#ffffff" opacity="0.12"/>
+  <!-- 内描边高光环 -->
+  <rect x="14" y="14" width="996" height="996" rx="210" fill="none" stroke="#ffffff" stroke-opacity="0.30" stroke-width="14"/>
+
+  <!-- 中心硬币徽章 -->
+  <circle cx="512" cy="470" r="290" fill="url(#coin)"/>
+  <circle cx="512" cy="470" r="290" fill="none" stroke="#ffffff" stroke-opacity="0.55" stroke-width="10"/>
+
+  <!-- ¥ 符号 -->
+  <text x="512" y="600" font-family="PingFang SC, Microsoft YaHei, Helvetica, Arial, sans-serif"
+        font-size="380" font-weight="800" fill="#4a52d8" text-anchor="middle">¥</text>
+
+  <!-- 绿色向上增长箭头（结余为正 / 节流积累） -->
+  <path d="M512 720 L588 800 L548 800 L548 884 L476 884 L476 800 L436 800 Z"
+        fill="url(#arrow)"/>
+  <path d="M512 720 L588 800 L548 800 L548 884 L476 884 L476 800 L436 800 Z"
+        fill="#ffffff" opacity="0.10"/>
+</svg>
